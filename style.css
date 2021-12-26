@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pushster&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    overflow: hidden;
+}
+
+body {
+    color: white;
+    overflow: scroll;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;   
+}
+
+.main {
+    opacity: 0;
+    background-image: url("assets/bg.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.inner {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: min-content;
+    min-height: 100vh;
+}
+
+.inner>.wrapper {
+    background-color: rgb(22, 22, 22);
+    padding: 30px;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 500px;
+}
+
+.links {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.links>.link {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+
+    padding: 20px;
+    border-radius: 20px;
+    margin: 5px 0;
+    background-color: rgb(19, 19, 19);
+    width: 100%;
+
+    transition: all 0.1s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.links>.link:hover {
+    background-color: rgb(43, 43, 43);
+}
+
+.links>.link>img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.logo {
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo>.wrapper>.name {
+    font-family: 'Pushster', cursive;
+}
+
+.logo>.avatar {
+    margin-right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
