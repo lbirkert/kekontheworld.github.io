@@ -19,13 +19,13 @@ body {
 
 .main {
     opacity: 0;
-    background-image: url("assets/bg.jpg");
+    background-image: url("../../assets/bg.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    overflow: scroll;
     height: 100%;
+    overflow: scroll;
 }
 
 *::-webkit-scrollbar {
@@ -52,43 +52,42 @@ body {
     align-items: center;
 
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
 }
 
-.links {
-    margin-top: 20px;
-    text-align: center;
+.result {
+    margin-top: 10px;
     width: 100%;
+}
+
+.record {
     display: flex;
     flex-direction: column;
+    background-color: rgb(19, 19, 19);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
 }
 
-.links>.link {
-    font-size: 18px;
-    color: white;
-    text-decoration: none;
-
-    padding: 20px;
-    border-radius: 20px;
-    margin: 5px 0;
-    background-color: rgb(19, 19, 19);
-    width: 100%;
-
-    transition: all 0.1s ease;
-
+.record>.head {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
-.links>.link:hover {
-    background-color: rgb(43, 43, 43);
+.record>.head>.ttl {
+    margin-left: 10px;
+    font-weight: bold;
 }
 
-.links>.link>img {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
+.record>.data {
+    margin-top: 10px;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgb(16, 16, 16);
+    color: rgb(161, 161, 161);
 }
 
 .logo {
@@ -105,5 +104,46 @@ body {
     margin-right: 20px;
     width: 60px;
     height: 60px;
-    border-radius: 30px;
+}
+
+#form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+input, button {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 5px 0;
+    background-color: rgb(19, 19, 19);
+    width: 100%;
+
+    transition: all 0.1s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+}
+
+input[type="submit"], button {
+    margin-top: 10px;
+    background-color: rgb(0, 119, 255);
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+    margin-top: 10px;
+    background-color: rgb(0, 71, 153);
+    cursor: pointer;
+}
+
+.loader {
+    margin-top: 40px;
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>whois</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="loader.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="app.js"></script>
+
+    </head>
+    <body>
+        <div class="main">
+            <div class="inner">
+                <div class="wrapper">
+                    <div class="logo">
+                        <img class="avatar" src="../../assets/whois.png" alt="">
+                        <div class="wrapper">
+                            <h1 class="name">whois</h1>
+                            <p class="subtitle">Explore</p>
+                        </div>
+                    </div>
+                    <form id="form">
+                        <input id="domain" type="text" placeholder="Domain">
+                        <input type="submit" value="Search" id="submit">
+                    </form>
+                    <div class="loader" style="display: none;">
+                        <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    
+                    <div class="result"></div>
+                    <button id="back" style="display: none;">Back</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
