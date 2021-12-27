@@ -88,6 +88,8 @@ body {
     border: none;
     background-color: rgb(16, 16, 16);
     color: rgb(161, 161, 161);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .logo {
