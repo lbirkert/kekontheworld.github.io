@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pushster&display=swap');
 
+#imprint {
+    text-decoration: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 * {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -7,10 +14,10 @@
     box-sizing: border-box;
     scrollbar-width: none;
     overflow: hidden;
+    color: white;
 }
 
 body {
-    color: white;
     overflow: hidden;
     height: 100vh;
     width: 100vw;
