@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	font-family: 'Dela Gothic One', cursive;
+	text-align: center;
+}
+
+@layer base {
+	body {
+		@apply w-screen h-screen;
+	}
+
+	* {
+		@apply dark:text-black;
+	}
+
+	h1 {
+		@apply text-black text-2xl;
+	}
+
+	p {
+		@apply text-gray-800;
+	}
+}

@@ -1,0 +1,49 @@
+name: Publish to github pages
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: 16
+
+      - name: Cache Yarn and node-modules
+        uses: auguwu/node-pm-cache@master
+        with:
+          node-modules: ./node_modules
+          package-manager: npm
+
+      - name: Install JS dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1.0.3
+        with:
+          path: docs/
+
+      - name: Deploy GitHub Pages site
+        uses: actions/deploy-pages@v1.0.8
