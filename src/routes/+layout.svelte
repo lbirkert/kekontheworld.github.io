@@ -1,7 +1,7 @@
 <script>
-	import '@fontsource/dela-gothic-one';
+	import "@fontsource/dela-gothic-one";
 
-	import '../app.css';
+	import "../app.css";
 </script>
 
 <slot />

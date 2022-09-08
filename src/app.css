@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-	font-family: 'Dela Gothic One', cursive;
+	font-family: "Dela Gothic One", cursive;
 	text-align: center;
 }
 

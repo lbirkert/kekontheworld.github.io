@@ -1,5 +1,5 @@
 <script lang="ts">
-	const title = 'Rewriting...';
+	const title = "Rewriting...";
 
 	const opacityDuration = 200;
 	const letterSpacing = 50;
