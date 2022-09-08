@@ -11,9 +11,10 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			pages: "docs",
-			assets: "docs",
-			fallback: "404.html"
+			pages: "build",
+			assets: "build",
+			fallback: "404.html",
+
 		}),
 		trailingSlash: "always"
 	}
