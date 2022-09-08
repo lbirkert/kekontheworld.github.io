@@ -65,6 +65,7 @@
 	}
 
 	h1 span {
+		opacity: 0;
 		display: inline-block;
 		animation-fill-mode: both;
 		animation-duration: 1s;
