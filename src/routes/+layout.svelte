@@ -1,5 +1,5 @@
 <script>
-	import "@fontsource/dela-gothic-one";
+	import "@fontsource/dela-gothic-one/latin.css";
 
 	import "../app.css";
 </script>
