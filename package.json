@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/dela-gothic-one": "^4.5.10"
+		"@fontsource/dela-gothic-one": "^4.5.10",
+		"@fontsource/inter": "^4.5.12"
 	}
 }
