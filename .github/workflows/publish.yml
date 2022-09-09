@@ -32,7 +32,7 @@ jobs:
         uses: auguwu/node-pm-cache@master
         with:
           node-modules: ./node_modules
-          package-manager: npm
+          package-manager: yarn
 
       - name: Install JS dependencies
         run: npm install
