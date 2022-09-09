@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>KekOnTheWorld | Rewriting</title>
+</svelte:head>
+
 <script lang="ts">
 	const title = "Rewriting...";
 
