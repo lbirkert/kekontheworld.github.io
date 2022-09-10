@@ -93,11 +93,11 @@
         @apply opacity-0 absolute bg-gray-800 text-white
                -translate-y-full px-4 py-4 transition-opacity
                duration-300 rounded-lg rounded-bl-none
-               flex flex-col items-start;
+               flex flex-col items-start pointer-events-none;
     }
 
     span.menu > menu {
-        @apply opacity-100;
+        @apply opacity-100 pointer-events-auto;
     }
 
     menu > input {
