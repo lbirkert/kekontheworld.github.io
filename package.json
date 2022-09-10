@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/dela-gothic-one": "^4.5.10",
-		"@fontsource/inter": "^4.5.12"
+		"@fontsource/inter": "^4.5.12",
+		"timezones.json": "^1.6.1"
 	}
 }
