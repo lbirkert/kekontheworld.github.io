@@ -5,6 +5,11 @@
 body {
 	font-family: "Dela Gothic One", cursive;
 	text-align: center;
+	overflow: hidden;
+}
+
+body.scroll {
+	overflow: scroll;
 }
 
 html {
@@ -30,5 +35,10 @@ html {
 
 	.full {
 		@apply pt-14 min-h-screen;
+	}
+
+	input {
+		@apply px-4 py-1 text-white placeholder-gray-400
+			bg-gray-900/50 rounded-lg;
 	}
 }
