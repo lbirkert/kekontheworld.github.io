@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
 	}
 
 	* {
-		@apply dark:text-black;
+		@apply dark:text-white box-border transition-colors duration-300;
 	}
 
 	h1 {
@@ -45,5 +45,25 @@ body::-webkit-scrollbar {
 	input {
 		@apply px-4 py-1 text-white placeholder-gray-400
 			bg-gray-900/50 rounded-lg outline-none border-none;
+	}
+
+
+    input[type="checkbox"] {
+        --cisize: 20px;
+	    --csize: 16px;
+		@apply cursor-pointer border-none outline-none
+			   appearance-none w-[calc(var(--cisize)*2)] h-[var(--cisize)]
+			   p-[calc(calc(var(--cisize)-var(--csize))/2)] rounded-xl
+			   after:content-[""] after:block after:bg-white dark:after:bg-black
+			   after:w-[var(--csize)] after:h-[var(--csize)] after:rounded-lg
+			   after:transition-transform after:duration-300
+			   checked:after:translate-x-[var(--cisize)] 
+			   bg-black dark:bg-white
+			   dark:checked:bg-orange-500
+			   checked:bg-red-600;
+    }
+
+	.active {
+		@apply text-red-600 dark:text-orange-500;
 	}
 }

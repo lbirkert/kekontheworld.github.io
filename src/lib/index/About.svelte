@@ -27,8 +27,4 @@
     section.active > p {
         @apply delay-500 duration-1000 opacity-100 translate-y-0 scale-100;
     }
-
-    /* :global(.hover\:hidden) {
-        display: none;
-    } */
 </style>

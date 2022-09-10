@@ -56,7 +56,8 @@
     }
 
     onMount(() => {
-        scroll.subscribe(v => document.body.className = v ? "scroll" : "");
+        scroll.subscribe(v => v ? document.body.classList.add("scroll") : 
+            document.body.classList.remove("scroll"));
 
         setTimeout(()=>window.scrollTo(0, 0), 1);
 

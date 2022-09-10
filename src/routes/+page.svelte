@@ -28,7 +28,10 @@
 
 <svelte:window bind:innerHeight></svelte:window>
 
-<div class="wrapper" class:mount>
+<!-- svelte-ignore a11y-missing-content -->
+<a href="about" id="about" class="hidden"></a>
+
+<div class="wrapper bg-white dark:bg-black" class:mount>
     <Navbar bind:position={$position}/>
     <main class="h-screen">
         <SnapScroll {sections} height={innerHeight} bind:position bind:active>
@@ -43,8 +46,7 @@
 
 <style lang="postcss">
     .wrapper {
-        opacity: 0;
-        transition: opacity 1s ease;
+        @apply transition-opacity duration-1000 opacity-0;
     }
 
     .wrapper.mount {
