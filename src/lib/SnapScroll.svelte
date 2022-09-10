@@ -4,32 +4,51 @@
     import { page } from "$app/stores";
 
     import { onMount } from "svelte";
-    import { spring } from "svelte/motion";
     import { writable } from "svelte/store";
 
     export let sections: string[];
     export let height: number[] | number;
     export let wheellock: number = 500;
+    export let position = writable(0);
+    export let active: {[key: number]: boolean} = {};
 
+    let _position: number = 0;
+    let activeTm: {[key: number]: NodeJS.Timeout} = {};
+
+    function resetActive(position: number) {
+        activeTm[position] = setTimeout(() => active[position] = false, 300);
+    }
+
+    function clearActive(position: number) {
+        clearTimeout(activeTm[position]);
+    }
+
+    function setActive(position: number) {
+        activeTm[position] = setTimeout(() => active[position] = true, 180);
+    }
+    
     let wheelLocked: boolean = false;
-    let scrollY: number = 0;
-
-    let position = writable(0);
+    let scrollY: number;
+    
     let gotoPosition: number = 0;
-    let currentPosition = spring($position);
-    $: $currentPosition = gotoPosition;
+    
+    $: if(height) gotoPosition = calculatePosition($position, height);
 
+    let scroll = writable(false);
+    let scrollTm: NodeJS.Timeout;
     $: {
-        if(height) {
-            if(typeof height == "number") gotoPosition = $position * height;
-            else gotoPosition = height.slice(0, $position).reduce((k, v) => k + v, 0);  
+        clearInterval(scrollTm);
+        let _scroll = $position === sections.length - 1;
+        if(_scroll !== $scroll) {
+            if(_scroll) scrollTm = setTimeout(() => $scroll = true, 500);
+            else $scroll = false;
         }
     };
 
-    let scroll = writable(false);
-    $: $scroll = $position + 2 > sections.length && 
-        (gotoPosition / 40).toFixed(0) === ($currentPosition / 40).toFixed(0);
-    
+    function calculatePosition(position: number, height: number | number[]): number {
+        return typeof height == "number" ? position * height :
+            height.slice(0, position).reduce((k, v) => k + v, 0);
+    }
 
     function lockWheel() {
         wheelLocked = true;
@@ -37,17 +56,38 @@
     }
 
     onMount(() => {
-        scroll.subscribe(v => document.body.style.overflow = v ? "" : "hidden");
+        scroll.subscribe(v => document.body.className = v ? "scroll" : "");
 
         setTimeout(()=>window.scrollTo(0, 0), 1);
 
         page.subscribe(p => {
             let _hash = p.url.hash.substring(1);
             let _position = sections.indexOf(_hash);
-            if(_position !== $position) $position = _position;
+            if(_position === -1) _position = 0;
+            if(_position !== $position) {
+                $position = _position;
+                // Force scroll up
+                if(scrollY !== 0) {
+                    const intv = setInterval(() => {
+                        if(scrollY === 0) clearInterval(intv);
+                        else window.scrollTo(0, 0);
+                    }, 10);
+                }
+            }
         });
 
-        position.subscribe(p => goto("#" + sections[p]));
+        position.subscribe(p => {
+            resetActive(_position);
+            clearActive(p);
+            setActive(p);
+
+            _position = p;
+
+            let _hash = $page.url.hash.substring(1);
+            let hash = sections[p];
+            if(hash !== _hash) goto("#" + hash);
+            
+        });
     });
 
     const onWheel = function(e) {
@@ -77,10 +117,10 @@
     } as svelte.JSX.KeyboardEventHandler<Window>;
 </script>
 
-<svelte:window on:keydown={onKeyDown} bind:scrollY></svelte:window>
+<svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>
 
 <div class="scroller" on:wheel={onWheel}>
-    <div class="wrapper" style:transform="translateY(-{$currentPosition}px)">
+    <div class="wrapper" style:transform="translateY(-{gotoPosition}px)">
         <slot/>
     </div>
 </div>
@@ -92,6 +132,6 @@
     }
 
     .wrapper {
-        min-height: 100%;
+        @apply min-h-full transition-transform duration-500;
     }
 </style>
