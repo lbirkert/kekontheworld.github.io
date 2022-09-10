@@ -30,8 +30,8 @@
     function score(timezone: Timezone, query: string): number {
         let _query = clean(query);
         return ((_query.startsWith("utc") && 
-            _query.slice(3) === timezone.offset.toString() || 
-            _query === timezone.offset.toString()) ? 10 : 0) +
+            _query.slice(3) === clean(timezone.offset.toString()) || 
+            _query === clean(timezone.offset.toString())) ? 10 : 0) +
             (clean(timezone.abbr).startsWith(_query) ? 3 : 0) +
             (clean(timezone.value).includes(_query) ? 2 : 0) + 
             (clean(timezone.text).includes(_query) ? 3 : 0) + 
@@ -106,15 +106,23 @@
         @apply flex flex-col w-full;
     }
 
-    .zones p {
-        @apply text-white text-base transition-colors duration-200;
-    }
-
     .zone {
         @apply flex justify-between cursor-pointer;
     }
 
-    .zone.active p {
+    .zone p {
+        @apply text-base transition-colors duration-100 text-white;
+    }
+
+    .zone:hover p {
+        @apply text-gray-300;
+    }
+
+     .zone.active p {
         @apply text-blue-300;
+    }
+   
+    .zone.active:hover p {
+        @apply text-blue-400;
     }
 </style>
