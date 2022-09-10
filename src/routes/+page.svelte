@@ -1,4 +1,7 @@
-<script lang="ts">
+<script lang="ts"> 
+    import { onMount } from "svelte";
+    import type { Writable } from "svelte/store";
+
     import Footer from "$lib/Footer.svelte";
     import About from "$lib/index/About.svelte";
     import Contact from "$lib/index/Contact.svelte";
@@ -6,7 +9,6 @@
     import Projects from "$lib/index/Projects.svelte";
     import Navbar from "$lib/Navbar.svelte";
     import SnapScroll from "$lib/SnapScroll.svelte";
-    import { onMount } from "svelte";
 
     let mount: boolean = false;
 
@@ -20,18 +22,20 @@
     ];
 
     let innerHeight: number;
+    let position: Writable<number>;
+    let active: {[key: number]: boolean} = {};
 </script>
 
 <svelte:window bind:innerHeight></svelte:window>
 
 <div class="wrapper" class:mount>
-    <Navbar/>
+    <Navbar bind:position={$position}/>
     <main class="h-screen">
-        <SnapScroll {sections} height={innerHeight}>
-            <About bind:mount/>
-            <Experience bind:mount/>
-            <Projects bind:mount/>
-            <Contact bind:mount/>
+        <SnapScroll {sections} height={innerHeight} bind:position bind:active>
+            <About active={mount && active[0]}/>
+            <Experience active={mount && active[1]}/>
+            <Projects active={mount && active[2]}/>
+            <Contact active={mount && active[3]}/>
         </SnapScroll>
     </main>
     <Footer/>

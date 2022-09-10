@@ -1,6 +1,6 @@
 <script lang="ts">
     // svelte-ignore unused-export-let
-    export let mount: boolean;
+    export let active: boolean;
 </script>
 
 <section 
