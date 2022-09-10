@@ -24,7 +24,7 @@
     }
 
     function setActive(position: number) {
-        activeTm[position] = setTimeout(() => active[position] = true, 180);
+        activeTm[position] = setTimeout(() => active[position] = true, Math.abs(_position - position) * 90 + 90);
     }
     
     let wheelLocked: boolean = false;

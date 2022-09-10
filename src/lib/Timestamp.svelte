@@ -29,7 +29,7 @@
 
     function score(timezone: Timezone, query: string): number {
         let _query = clean(query);
-        return ((_query.startsWith("UTC") && 
+        return ((_query.startsWith("utc") && 
             _query.slice(3) === timezone.offset.toString() || 
             _query === timezone.offset.toString()) ? 10 : 0) +
             (clean(timezone.abbr).startsWith(_query) ? 3 : 0) +
@@ -39,7 +39,7 @@
     }
 
     function clean(text: string): string {
-        return text.replace(/(?![a-zA-Z0-9-])./g, "");
+        return text.replace(/(?![a-zA-Z0-9-])./g, "").toLowerCase();
     }
 
     let root: HTMLSpanElement;
@@ -66,10 +66,11 @@
     <menu>
         <input type="text" placeholder="Timezone" bind:value={timezoneSearch}>
         <div class="zones">
-            {#each timezones as timezone, i}
-                <div class="zone" on:click={(e) => {
+            {#each timezones as timezone}
+                <div class="zone" on:click={() => {
                     offset = timezone.offset;
-                }}>
+                    menu = false;
+                }} class:active={timezone.offset === offset}>
                     <p>{timezone.value}</p>
                     <p>UTC{timezone.offset < 0 ? "" : "+"}{timezone.offset}</p>
                 </div>
@@ -78,6 +79,7 @@
     </menu>
 </span>
 
+
 <style lang="postcss">
     span {
         @apply rounded-lg bg-gray-800 text-white
@@ -85,23 +87,19 @@
                transition-all duration-300;
     }
 
-    span.menu {
-        @apply rounded-t-none;
-    }
-
     menu {
         @apply opacity-0 absolute bg-gray-800 text-white
-               -translate-y-full px-4 py-4 transition-opacity
-               duration-300 rounded-lg rounded-bl-none
-               flex flex-col items-start pointer-events-none;
+               top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] px-4 py-4 transition-[opacity,transform]
+               duration-300 rounded-lg
+               flex flex-col items-start pointer-events-none scale-0;
     }
 
     span.menu > menu {
-        @apply opacity-100 pointer-events-auto;
+        @apply opacity-100 pointer-events-auto scale-100;
     }
 
     menu > input {
-        @apply text-lg font-medium;
+        @apply text-lg font-medium mb-2;
     }
 
     .zones {
@@ -109,10 +107,14 @@
     }
 
     .zones p {
-        @apply text-white text-base;
+        @apply text-white text-base transition-colors duration-200;
     }
 
     .zone {
         @apply flex justify-between cursor-pointer;
+    }
+
+    .zone.active p {
+        @apply text-blue-300;
     }
 </style>

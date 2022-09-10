@@ -6,14 +6,19 @@ body {
 	font-family: "Dela Gothic One", cursive;
 	text-align: center;
 	overflow: hidden;
+	scrollbar-width: none;
 }
 
 body.scroll {
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 html {
 	scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+	display: none;
 }
 
 @layer base {
@@ -39,6 +44,6 @@ html {
 
 	input {
 		@apply px-4 py-1 text-white placeholder-gray-400
-			bg-gray-900/50 rounded-lg;
+			bg-gray-900/50 rounded-lg outline-none border-none;
 	}
 }
