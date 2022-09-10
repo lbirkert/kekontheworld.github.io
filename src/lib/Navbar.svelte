@@ -1,7 +1,5 @@
 <script lang="ts">
-    import { page } from "$app/stores";
-
-    $: current = $page.url.pathname;
+    export let position: number = 0;
 </script>
 
 <nav class="bg-white 
@@ -13,16 +11,20 @@
         class="w-10 h-10 rounded-lg cursor-pointer" 
         src="/kekontheworld.png" alt="Logo"
     >
-    <div class="links flex gap-4">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+    <div class="links flex gap-2 sm:gap-4 md:gap-8 lg:gap-16">
+        <a href="#about" class:active={position === 0}>About</a>
+        <a href="#experience" class:active={position === 1}>Experience</a>
+        <a href="#projects" class:active={position === 2}>Projects</a>
+        <a href="#contact" class:active={position === 3}>Contact</a>
     </div>
 </nav>
 
 <style lang="postcss">
     .links a {
-        @apply font-[Inter] text-base font-medium hover:text-black/75;
+        @apply font-[Inter] text-base font-medium hover:text-black/75 transition-colors;
+    }
+
+    .links a.active {
+        @apply text-orange-800;
     }
 </style>
