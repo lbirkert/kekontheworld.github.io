@@ -4,6 +4,7 @@
     import { page } from "$app/stores";
 
     import { onMount } from "svelte";
+import { current_component } from "svelte/internal";
     import { writable } from "svelte/store";
 
     export let sections: string[];
@@ -65,16 +66,7 @@
             let _hash = p.url.hash.substring(1);
             let _position = sections.indexOf(_hash);
             if(_position === -1) _position = 0;
-            if(_position !== $position) {
-                $position = _position;
-                // Force scroll up
-                if(scrollY !== 0) {
-                    const intv = setInterval(() => {
-                        if(scrollY === 0) clearInterval(intv);
-                        else window.scrollTo(0, 0);
-                    }, 10);
-                }
-            }
+            if(_position !== $position) $position = _position;
         });
 
         position.subscribe(p => {
@@ -106,6 +98,29 @@
         }
     } as svelte.JSX.WheelEventHandler<HTMLDivElement>;
 
+    let touchStart: number;
+    let touchMove: number;
+
+    const onTouchStart = function(e) {
+        touchStart = e.touches[0].clientY;
+    } as svelte.JSX.TouchEventHandler<HTMLDivElement>;
+    
+    const onTouchMove = function(e) {
+        touchMove = e.touches[0].clientY;
+
+    } as svelte.JSX.TouchEventHandler<HTMLDivElement>;
+    
+    const onTouchEnd = function(e) {
+        if(scrollY === 0 && (e.target as HTMLElement).nodeName === "SECTION") {
+            const dy = touchStart - touchMove;
+
+            if(dy > 20 && $position + 1 < sections.length) $position++;
+            else if(dy < 20 && $position > 0) $position--;
+        }
+
+        touchStart = 0;
+    } as svelte.JSX.TouchEventHandler<HTMLDivElement>;
+    
     const onKeyDown = function(e) {
         if(scrollY === 0) {
             let deltaY = e.key === "ArrowDown" ? 1 : (e.key === "ArrowUp" ? -1 : 0);
@@ -120,7 +135,9 @@
 
 <svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>
 
-<div class="scroller" on:wheel={onWheel}>
+<div class="scroller" on:wheel={onWheel}
+    on:touchstart={onTouchStart} on:touchend={onTouchEnd}
+    on:touchmove={onTouchMove}>
     <div class="wrapper" style:transform="translateY(-{gotoPosition}px)">
         <slot/>
     </div>
