@@ -23,11 +23,15 @@ body::-webkit-scrollbar {
 
 @layer base {
 	body {
-		@apply w-screen h-screen;
+		@apply w-screen h-screen bg-white;
+	}
+
+	head.dark ~ body {
+		@apply bg-black;
 	}
 
 	* {
-		@apply dark:text-white box-border transition-colors duration-300;
+		@apply dark:text-white box-border;
 	}
 
 	h1 {
@@ -39,7 +43,7 @@ body::-webkit-scrollbar {
 	}
 
 	.full {
-		@apply pt-14 min-h-screen;
+		@apply pt-16 sm:pt-14 min-h-screen;
 	}
 
 	input {
@@ -63,7 +67,15 @@ body::-webkit-scrollbar {
 			   checked:bg-red-600;
     }
 
+	a {
+		@apply text-black hover:text-black/80 dark:hover:text-white/75;
+	}
+
 	.active {
 		@apply text-red-600 dark:text-orange-500;
+	}
+
+	.active:hover {
+		@apply text-red-600/80 dark:text-orange-600;
 	}
 }
