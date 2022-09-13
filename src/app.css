@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
 
 @layer base {
 	body {
-		@apply w-screen h-screen bg-white;
+		@apply w-screen h-screen bg-white transition-colors duration-100;
 	}
 
 	head.dark ~ body {
@@ -31,15 +31,15 @@ body::-webkit-scrollbar {
 	}
 
 	* {
-		@apply dark:text-white box-border;
+		@apply box-border;
 	}
 
 	h1 {
-		@apply text-black text-2xl;
+		@apply text-black text-2xl dark:text-white;
 	}
 
 	p {
-		@apply text-gray-800;
+		@apply text-gray-800 dark:text-white/90;
 	}
 
 	.full {
@@ -68,7 +68,7 @@ body::-webkit-scrollbar {
     }
 
 	a {
-		@apply text-black hover:text-black/80 dark:hover:text-white/75;
+		@apply text-black hover:text-black/80 dark:text-white/90 dark:hover:text-white/75;
 	}
 
 	.active {
