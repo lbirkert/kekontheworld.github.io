@@ -1,10 +1,8 @@
 <script lang="ts">
-    import type { Writable } from "svelte/store";
-    import DarkMode from "./DarkMode.svelte";
+    import { darkMode } from "$lib/theme";
 
     export let position: number = 0;
 
-    let darkMode: Writable<boolean>;
     let darkModeLocked: boolean = false;
 
     $: lockDarkMode($darkMode);
@@ -23,8 +21,6 @@
         ["#contact", "Contact"],
     ];
 </script>
-
-<DarkMode bind:darkMode />
 
 <nav class="backdrop-blur-sm
             h-16 sm:h-14 px-4 py-2 sm:py-2 w-full z-10 fixed
