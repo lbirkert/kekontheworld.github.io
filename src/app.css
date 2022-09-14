@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
 
 @layer base {
 	body {
-		@apply w-screen h-screen bg-white transition-colors duration-100;
+		@apply w-screen h-screen bg-white;
 	}
 
 	head.dark ~ body {
