@@ -22,8 +22,8 @@
     ];
 </script>
 
-<nav class="backdrop-blur-sm
-            h-16 sm:h-14 px-4 py-2 sm:py-2 w-full z-10 fixed
+<nav class="backdrop-blur-sm max-w-6xl top-0 left-[50%] -translate-x-[50%] self-center
+            h-16 sm:h-14 px-[max(1rem,4vw)] py-2 sm:py-2 w-full z-10 fixed
             flex items-center justify-between">
 
     <img 
