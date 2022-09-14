@@ -19,7 +19,7 @@
     <h1 class="sm:text-4xl text-3xl">
         <FlyinText text="KekOnTheWorld" flyin={active} delay={300}/>
     </h1>
-    <p class="font-[Inter] max-w-2xl sm:text-lg text-base">
+    <p>
         KekOnTheWorld is a student and developer who loves Opensource Software.
         He has been coding since <Timesince time={new Date("2020-1-8 9:15")}/> and is heavily <a href="#experience">experienced</a> in Front- and Backend development.
     </p>
@@ -48,7 +48,8 @@
 
 <style lang="postcss">
     section > p {
-        @apply transition-[opacity,transform] opacity-0 translate-y-10 scale-150;
+        @apply font-[Inter] max-w-2xl transition-[opacity,transform] 
+            opacity-0 translate-y-10 scale-150 sm:text-lg text-base;
     }
 
     section.active > p {
@@ -57,12 +58,13 @@
 
     .socials {
         --background: white;
-        @apply flex gap-x-4 mt-2;
+        @apply flex sm:gap-4 gap-3 mt-2;
     }
 
     .socials a :global(svg) {
         @apply dark:text-white dark:hover:text-white/80 duration-300
-              text-black hover:text-black/80 transition-colors;
+              text-black hover:text-black/80 transition-colors sm:w-8 sm:h-8 
+              cursor-pointer w-7 h-7;
     }
 
     .socials a {
@@ -73,17 +75,13 @@
         @apply duration-1000 opacity-100 translate-y-0;
     }
 
-    section.active .socials a:nth-child(0) { @apply delay-[700ms] }
-    section.active .socials a:nth-child(1) { @apply delay-[780ms] }
-    section.active .socials a:nth-child(2) { @apply delay-[860ms] }
-    section.active .socials a:nth-child(3) { @apply delay-[940ms] }
-    section.active .socials a:nth-child(4) { @apply delay-[1020ms] }
-    section.active .socials a:nth-child(5) { @apply delay-[1100ms] }
-    section.active .socials a:nth-child(6) { @apply delay-[1180ms] }
-
-    .socials :global(svg) {
-        @apply w-8 h-8 cursor-pointer;
-    }
+    section.active .socials a:nth-child(0) { @apply delay-[800ms] }
+    section.active .socials a:nth-child(1) { @apply delay-[850ms] }
+    section.active .socials a:nth-child(2) { @apply delay-[900ms] }
+    section.active .socials a:nth-child(3) { @apply delay-[950ms] }
+    section.active .socials a:nth-child(4) { @apply delay-[1000ms] }
+    section.active .socials a:nth-child(5) { @apply delay-[1050ms] }
+    section.active .socials a:nth-child(6) { @apply delay-[1100ms] }
 
     :global(head.dark ~ body) .socials {
         --background: black;
