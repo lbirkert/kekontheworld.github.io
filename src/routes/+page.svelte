@@ -9,12 +9,11 @@
     import Projects from "$lib/index/Projects.svelte";
     import Navbar from "$lib/Navbar.svelte";
     import SnapScroll from "$lib/SnapScroll.svelte";
+	import { browser } from "$app/environment";
 
     let mount: boolean = false;
 
-    onMount(() => {
-        mount = true;
-    });
+    if(browser) mount = true;
 
     const sections = [
         "about", "experience",
