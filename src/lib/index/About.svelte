@@ -14,7 +14,7 @@
 
 <section 
     class="full flex items-center justify-center flex-col gap-5 px-5"
-    class:active={active}
+    class:active
 >
     <h1 class="sm:text-4xl text-3xl">
         <FlyinText text="KekOnTheWorld" flyin={active} delay={300}/>
@@ -37,7 +37,7 @@
         <a href="https://twitter.com/KekOnTheWorld" target="_blank">
             <Twitter/>
         </a>
-        <a href="https://twitch.tv/KekOnTheWorld">
+        <a href="https://twitch.tv/KekOnTheWorld" target="_blank">
             <Twitch/>
         </a>
         <a href="https://www.youtube.com/channel/UCn-EuwrJNTYtkBS-r_XudjA" target="_blank">
@@ -60,10 +60,26 @@
         @apply flex gap-x-4 mt-2;
     }
 
-    .socials a {
-        @apply dark:text-white dark:hover:text-white/80
-              text-black hover:text-black/80 transition-colors duration-100;
+    .socials a :global(svg) {
+        @apply dark:text-white dark:hover:text-white/80 duration-300
+              text-black hover:text-black/80 transition-colors;
     }
+
+    .socials a {
+        @apply transition-[transform,opacity] translate-y-5 opacity-0;
+    }
+    
+    section.active .socials a {
+        @apply duration-1000 opacity-100 translate-y-0;
+    }
+
+    section.active .socials a:nth-child(0) { @apply delay-[700ms] }
+    section.active .socials a:nth-child(1) { @apply delay-[780ms] }
+    section.active .socials a:nth-child(2) { @apply delay-[860ms] }
+    section.active .socials a:nth-child(3) { @apply delay-[940ms] }
+    section.active .socials a:nth-child(4) { @apply delay-[1020ms] }
+    section.active .socials a:nth-child(5) { @apply delay-[1100ms] }
+    section.active .socials a:nth-child(6) { @apply delay-[1180ms] }
 
     .socials :global(svg) {
         @apply w-8 h-8 cursor-pointer;
