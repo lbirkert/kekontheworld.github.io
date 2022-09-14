@@ -1,14 +1,13 @@
 <script lang="ts">
     import FlyinText from "$lib/FlyinText.svelte";
-    import Timestamp from "$lib/Timestamp.svelte";
-    
+
     import Discord from "$lib/icons/Discord.svelte";
     import Github from "$lib/icons/Github.svelte";
-    import Instagram from "$lib/icons/Instagram.svelte";
     import Twitter from "$lib/icons/Twitter.svelte";
     import Youtube from "$lib/icons/Youtube.svelte";
-import Twitch from "$lib/icons/Twitch.svelte";
-import Gitlab from "$lib/icons/Gitlab.svelte";
+    import Twitch from "$lib/icons/Twitch.svelte";
+    import Gitlab from "$lib/icons/Gitlab.svelte";
+	import Timesince from "$lib/Timesince.svelte";
 
     export let active: boolean;
 </script>
@@ -22,7 +21,7 @@ import Gitlab from "$lib/icons/Gitlab.svelte";
     </h1>
     <p class="font-[Inter] max-w-2xl sm:text-lg text-base">
         KekOnTheWorld is a student and developer who loves Opensource Software.
-        He has been coding since <Timestamp time={new Date("2020-1-8 9:15")}/> and is heavily <a href="#experience">experienced</a> in Front- and Backend development.
+        He has been coding since <Timesince time={new Date("2020-1-8 9:15")}/> and is heavily <a href="#experience">experienced</a> in Front- and Backend development.
     </p>
     <!-- Todo: Add socials -->
     <div class="socials">
