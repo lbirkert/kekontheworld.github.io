@@ -29,7 +29,7 @@
     <img 
         draggable="false"
         class="w-12 sm:w-8 h-12 sm:h-8 rounded-lg cursor-pointer" 
-        src="/kekontheworld.png" alt="Logo"
+        src="/logo.png" alt="Logo"
         on:click={() => menu = !menu}
     >
     <div class="wrapper flex items-center gap-2 sm:gap-4 md:gap-8">
