@@ -1,107 +1,55 @@
-<svelte:head>
-	<title>KekOnTheWorld | Rewriting</title>
-</svelte:head>
+<script lang="ts"> 
+    import { onMount } from "svelte";
+    import type { Writable } from "svelte/store";
 
-<script lang="ts">
-	const title = "Rewriting...";
+    import Footer from "$lib/Footer.svelte";
+    import About from "$lib/index/About.svelte";
+    import Contact from "$lib/index/Contact.svelte";
+    import Experience from "$lib/index/Experience.svelte";
+    import Projects from "$lib/index/Projects.svelte";
+    import Navbar from "$lib/Navbar.svelte";
+    import SnapScroll from "$lib/SnapScroll.svelte";
+	import { browser } from "$app/environment";
 
-	const opacityDuration = 200;
-	const letterSpacing = 50;
+    let mount: boolean = false;
 
-	const _animate: { [key: number]: boolean } = {};
+    if(browser) mount = true;
 
-	function animate(letter: number) {
-		if (!_animate[letter]) {
-			_animate[letter] = true;
+    const sections = [
+        "about", "experience",
+        "projects", "contact"
+    ];
 
-			setTimeout(() => (_animate[letter] = false), 1000);
-		}
-	}
-
-	let c = 0;
-	const cmax = title.length * letterSpacing + opacityDuration;
-
-	const intv = setInterval(() => {
-		if (c % letterSpacing === 0) animate(c / letterSpacing);
-
-		if (c > cmax) clearInterval(intv);
-
-		c += 5;
-	}, 5);
-
-	const onTouchMove = function (e) {
-		for (const touch of e.changedTouches) {
-		}
-	} as svelte.JSX.TouchEventHandler<Window>;
+    let innerHeight: number;
+    let position: Writable<number>;
+    let active: {[key: number]: boolean} = {};
 </script>
 
-<svelte:window on:touchmove={onTouchMove} />
+<svelte:window bind:innerHeight></svelte:window>
 
-<main>
-	<h1 class="text-5xl">
-		{#each title as letter, i}
-			{@const _i = i * letterSpacing}
-			<span
-				on:mouseenter={() => animate(i)}
-				style:opacity={Math.min(1, Math.max(0, c - _i) / opacityDuration)}
-				class:animate={_animate[i]}>{letter}</span
-			>
-		{/each}
-	</h1>
-	<p class="text-lg">Come back later to see something awensome</p>
-</main>
+<!-- svelte-ignore a11y-missing-content -->
+<a href="#about" class="hidden"></a>
+
+<div class="wrapper" class:mount id="about">
+    <Navbar bind:position={$position}/>
+    <main class="h-screen">
+        <SnapScroll {sections} height={innerHeight} bind:position bind:active>
+            <About active={mount && active[0]}/>
+            <Experience active={mount && active[1]}/>
+            <Projects active={mount && active[2]}/>
+            <Contact active={mount && active[3]}/>
+        </SnapScroll>
+    </main>
+    <Footer/>
+</div>
 
 <style lang="postcss">
-	main {
-		@apply w-full h-full flex flex-col justify-center items-center gap-5 bg-gradient-to-t from-red-400 to-orange-300;
-	}
+    .wrapper {
+        @apply transition-opacity duration-1000 opacity-0;
+    }
 
-	p {
-		opacity: 0;
-		animation: 1s fadein ease forwards;
-		animation-delay: 1s;
-	}
-
-	@keyframes fadein {
-		to {
-			opacity: 1;
-		}
-	}
-
-	h1 span {
-		opacity: 0;
-		display: inline-block;
-		animation-fill-mode: both;
-		animation-duration: 1s;
-		cursor: pointer;
-		user-select: none;
-	}
-
-	h1 span.animate {
-		animation-name: rubberBand;
-	}
-
-	@keyframes rubberBand {
-		0% {
-			transform: scale3d(1, 1, 1);
-		}
-		30% {
-			transform: scale3d(1.25, 0.75, 1);
-		}
-		40% {
-			transform: scale3d(0.75, 1.25, 1);
-		}
-		50% {
-			transform: scale3d(1.15, 0.85, 1);
-		}
-		65% {
-			transform: scale3d(0.95, 1.05, 1);
-		}
-		75% {
-			transform: scale3d(1.05, 0.95, 1);
-		}
-		100% {
-			transform: scale3d(1, 1, 1);
-		}
-	}
+    .wrapper.mount {
+        opacity: 1;
+    }
 </style>
+

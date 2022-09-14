@@ -2,25 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+body {
 	font-family: "Dela Gothic One", cursive;
 	text-align: center;
+	overflow: hidden;
+	scrollbar-width: none;
+}
+
+body.scroll {
+	overflow-y: scroll;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+	display: none;
 }
 
 @layer base {
 	body {
-		@apply w-screen h-screen;
+		@apply w-screen h-screen bg-white;
+	}
+
+	head.dark ~ body {
+		@apply bg-black;
 	}
 
 	* {
-		@apply dark:text-black;
+		@apply box-border;
 	}
 
 	h1 {
-		@apply text-black text-2xl;
+		@apply text-black text-2xl dark:text-white;
 	}
 
 	p {
-		@apply text-gray-800;
+		@apply text-gray-800 dark:text-white/90;
+	}
+
+	.full {
+		@apply pt-16 sm:pt-14 min-h-screen;
+	}
+
+	input {
+		@apply px-4 py-1 text-white placeholder-gray-400
+			bg-gray-900/50 rounded-lg outline-none border-none;
+	}
+
+
+    input[type="checkbox"] {
+        --cisize: 20px;
+	    --csize: 16px;
+		@apply cursor-pointer border-none outline-none
+			   appearance-none w-[calc(var(--cisize)*2)] h-[var(--cisize)]
+			   p-[calc(calc(var(--cisize)-var(--csize))/2)] rounded-xl
+			   after:content-[""] after:block after:bg-white dark:after:bg-black
+			   after:w-[var(--csize)] after:h-[var(--csize)] after:rounded-lg
+			   after:transition-transform after:duration-300
+			   checked:after:translate-x-[var(--cisize)] 
+			   bg-black dark:bg-white
+			   dark:checked:bg-orange-500
+			   checked:bg-red-600;
+    }
+
+	a {
+		@apply text-black hover:text-black/80 dark:text-white/90 dark:hover:text-white/75;
+	}
+
+	.active {
+		@apply text-red-600 dark:text-orange-500;
+	}
+
+	.active:hover {
+		@apply text-red-600/80 dark:text-orange-600;
 	}
 }
