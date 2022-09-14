@@ -58,7 +58,7 @@
 
 <svelte:window on:click={onWindowClick}></svelte:window>
 
-<span class="" class:menu bind:this={root}>
+<span class:menu bind:this={root}>
     <div class="px-2" on:click={toggle}>
         {extend(_time.getMonth() + 1, 2)}/{extend(_time.getDate(), 2)}/{_time.getFullYear()}
         {extend(_time.getHours(), 2)}:{extend(_time.getMinutes(), 2)}
