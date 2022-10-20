@@ -15,10 +15,10 @@
     let menu: boolean = false;
 
     const links: [string, string][] = [
-        ["#about", "About"],
-        ["#experience", "Experience"],
-        ["#projects", "Projects"],
-        ["#contact", "Contact"],
+        ["/#about", "About"],
+        ["/#experience", "Experience"],
+        ["/#projects", "Projects"],
+        ["/#contact", "Contact"],
     ];
 </script>
 
