@@ -27,9 +27,6 @@
 
 <svelte:window bind:innerHeight></svelte:window>
 
-<!-- svelte-ignore a11y-missing-content -->
-<a href="#about" class="hidden"></a>
-
 <div class="wrapper" class:mount id="about">
     <Navbar bind:position={$position}/>
     <main class="h-screen">
