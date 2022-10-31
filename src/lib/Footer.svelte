@@ -6,7 +6,7 @@
     <div class="links">
         <a href="/legal/imprint">Imprint</a>
     </div>
-    <a href="#about">Back to top</a>
+    <a href={"#"}>Back to top</a>
 </footer>
 
 <style lang="postcss">
