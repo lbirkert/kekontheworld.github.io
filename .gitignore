@@ -10,3 +10,4 @@ node_modules
 .output
 package-lock.json
 analyzer
+pnpm-lock.yaml
