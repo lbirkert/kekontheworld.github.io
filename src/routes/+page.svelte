@@ -24,6 +24,10 @@
 
 <svelte:window bind:innerHeight></svelte:window>
 
+<svelte:head>
+    <title>KekOnTheWorld | 🎃 Happy Halloween</title>
+</svelte:head>
+
 <div class="wrapper" class:mount id="about">
     <Navbar bind:position={$position}/>
     <main class="h-screen">
