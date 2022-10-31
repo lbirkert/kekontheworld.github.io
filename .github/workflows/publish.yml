@@ -26,12 +26,6 @@ jobs:
         with:
           node-version: 16
 
-      - name: Cache Yarn and node-modules
-        uses: auguwu/node-pm-cache@master
-        with:
-          node-modules: ./node_modules
-          package-manager: yarn
-
       - name: Install JS dependencies
         run: npm install
 
