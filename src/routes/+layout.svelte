@@ -10,19 +10,20 @@
 <ThemePre/>
 
 
+<div id="bg">
+	<Halloween/>
+</div>
+
 <div id="root">
-	<div id="bg">
-		<Halloween/>
-	</div>
 	<slot />
 </div>
 
 <style lang="postcss">
-	#bg {
-        @apply bg-white/40 w-screen h-screen fixed -z-10;
+	#root {
+        @apply bg-white/50;
     }
 
-	:global(head.dark ~ body) #bg {
+	:global(head.dark ~ body) #root {
 		@apply bg-black/40;
 	}
 </style>
