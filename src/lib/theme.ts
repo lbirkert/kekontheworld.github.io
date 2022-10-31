@@ -3,10 +3,10 @@ import { get_store_value } from "svelte/internal";
 
 import { writable } from "svelte/store";
 
-export let darkMode = writable(false);
-export let prefered = writable("system");
+export const darkMode = writable(false);
+export const prefered = writable("system");
 export let system: MediaQueryList;
-export let systemMatches = writable(false);
+export const systemMatches = writable(false);
 
 function dispatchUpdate() {
     if(!system) return;
