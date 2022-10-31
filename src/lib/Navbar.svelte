@@ -26,12 +26,13 @@
             h-16 sm:h-14 px-[max(1rem,4vw)] py-2 sm:py-2 w-full z-10 fixed
             flex items-center justify-between">
 
-    <img 
-        draggable="false"
-        class="w-12 sm:w-8 h-12 sm:h-8 rounded-lg cursor-pointer" 
-        src="/logo.png" alt="Logo"
-        on:click={() => menu = !menu}
-    >
+    <button on:click={() => menu = !menu}>
+        <img 
+            draggable="false"
+            class="w-12 sm:w-8 h-12 sm:h-8 rounded-lg cursor-pointer" 
+            src="/logo.png" alt="Logo"
+        >
+    </button>
     <div class="wrapper flex items-center gap-2 sm:gap-4 md:gap-8">
         <div class="links">
             {#each links as [href, name], i}
@@ -40,7 +41,7 @@
                     on:click={() => menu = false}>{name}</a>
             {/each}
         </div>
-        <input type="checkbox" disabled={darkModeLocked} bind:checked={$darkMode}/>
+        <input aria-label="Change current theme to Light/Dark" id="theme-switcher" type="checkbox" disabled={darkModeLocked} bind:checked={$darkMode}/>
     </div>
 </nav>
 <div class:menu class="mobile bg-white/20 dark:bg-black/20">
