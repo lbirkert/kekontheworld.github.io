@@ -7,7 +7,7 @@ const config: UserConfig = {
 		ssrManifest: false
 	},
 	ssr: {
-		noExternal: ['three', 'troika-three-text']
+		noExternal: ["three", "troika-three-text"]
 	}
 };
 

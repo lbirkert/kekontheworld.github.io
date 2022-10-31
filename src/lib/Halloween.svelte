@@ -1,6 +1,5 @@
 <script>
-    import { MeshStandardMaterial, ShaderMaterial, PlaneGeometry } from 'three'
-    import { DEG2RAD } from 'three/src/math/MathUtils'
+    import { ShaderMaterial, PlaneGeometry } from 'three'
     import {
         AmbientLight,
         Canvas,
@@ -8,6 +7,7 @@
         Mesh,
         OrthographicCamera
     } from '@threlte/core'
+
 	import { browser } from '$app/environment';
 
     import vertexShader from "$lib/shaders/halloween.vert.js";
@@ -31,10 +31,12 @@
         material.uniforms.frame.value += 1;
     }
 
-    if(browser) animate();
+    let mount = browser;
+
+    if(mount) animate();
 </script>
 
-<main>
+<main class:mount>
     <Canvas>
         <OrthographicCamera position={{ x: 0, y: 0, z: 1 }}/>
 
@@ -53,6 +55,10 @@
 
 <style>
     main {
-        @apply w-screen h-screen fixed top-0 left-0 -z-10;
+        @apply w-screen h-screen fixed top-0 left-0 transition-opacity duration-1000 opacity-0 -z-10;
+    }
+
+    main.mount {
+        @apply opacity-100;
     }
 </style>
