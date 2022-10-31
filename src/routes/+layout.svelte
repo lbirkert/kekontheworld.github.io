@@ -19,7 +19,7 @@
 
 <style lang="postcss">
 	#bg {
-        @apply bg-white/40 w-screen h-screen absolute;
+        @apply bg-white/40 w-screen h-screen fixed;
     }
 
 	:global(head.dark ~ body) #bg {
