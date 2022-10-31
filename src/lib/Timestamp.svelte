@@ -1,14 +1,15 @@
 <script lang="ts">
+	import type { WithTarget } from "src/app";
     import _timezones, { type Timezone } from "timezones.json";
 
     export let time: Date;
-    export let offset: number = 0;
+    export let offset = 0;
 
     $: _time = new Date(time.getTime() + 
         time.getTimezoneOffset() * 60 * 1000 + 
         offset * 60 * 60 * 1000); // Convert Timezone
 
-    export let menu: boolean = false;
+    export let menu = false;
 
     function toggle() {
         menu = !menu;
@@ -43,12 +44,12 @@
     }
 
     let root: HTMLSpanElement;
-    const onWindowClick = function(e) {
-        let target: ParentNode | null = e.target as HTMLElement;
+    function onWindowClick(e: WithTarget<MouseEvent, Window>) {
+        let target: HTMLElement | null = e.target as HTMLElement;
         while(target && target !== root)
-            target = target.parentNode;
+            target = target.parentNode as HTMLElement;
         if(!target) menu = false;
-    } as svelte.JSX.MouseEventHandler<Window>;
+    };
 
     function extend(num: number, digits: number) {
         let _num = num.toString();
@@ -59,21 +60,21 @@
 <svelte:window on:click={onWindowClick}></svelte:window>
 
 <span class:menu bind:this={root}>
-    <div class="px-2" on:click={toggle}>
+    <button on:click={toggle} class="px-2">
         {extend(_time.getMonth() + 1, 2)}/{extend(_time.getDate(), 2)}/{_time.getFullYear()}
         {extend(_time.getHours(), 2)}:{extend(_time.getMinutes(), 2)}
-    </div>
+    </button>
     <menu>
         <input type="text" placeholder="Timezone" bind:value={timezoneSearch}>
         <div class="zones">
             {#each timezones as timezone}
-                <div class="zone" on:click={() => {
-                    offset = timezone.offset;
-                    menu = false;
-                }} class:active={timezone.offset === offset}>
-                    <p>{timezone.value}</p>
-                    <p>UTC{timezone.offset < 0 ? "" : "+"}{timezone.offset}</p>
-                </div>
+            <button class="zone" on:click={() => {
+                offset = timezone.offset;
+                menu = false;
+            }} class:active={timezone.offset === offset}>
+                <p>{timezone.value}</p>
+                <p>UTC{timezone.offset < 0 ? "" : "+"}{timezone.offset}</p>
+            </button>
             {/each}
         </div>
     </menu>

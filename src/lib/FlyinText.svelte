@@ -1,8 +1,8 @@
 <script lang="ts">
     export let text: string;
-    export let betweenDelay: number = 50;
-    export let delay: number = 0;
-    export let flyin: boolean = true;
+    export let betweenDelay = 50;
+    export let delay = 0;
+    export let flyin = true;
 
     $: letters = text.split("");
 </script>

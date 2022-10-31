@@ -1,18 +1,19 @@
 <script lang="ts">
     import { darkMode } from "$lib/theme";
 
-    export let position: number = 0;
+    export let position = 0;
 
-    let darkModeLocked: boolean = false;
+    let darkModeLocked = false;
 
     $: lockDarkMode($darkMode);
 
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     function lockDarkMode(_: unknown) {
         darkModeLocked = true;
         setTimeout(() => darkModeLocked = false, 300);
     }
 
-    let menu: boolean = false;
+    let menu = false;
 
     const links: [string, string][] = [
         ["/#about", "About"],

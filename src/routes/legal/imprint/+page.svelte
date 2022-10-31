@@ -3,7 +3,7 @@
 	import Footer from "$lib/Footer.svelte";
 	import Navbar from "$lib/Navbar.svelte";
 
-    let mount: boolean = false;
+    let mount = false;
 
     if(browser) {
         document.body.classList.add("scroll");

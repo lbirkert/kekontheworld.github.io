@@ -5,8 +5,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				"inter": ["Inter", "sans-serif"],
-				"dela": ["Dela Gothic One", "cursive"],
+				inter: ["Inter", "sans-serif"],
+				dela: ["Dela Gothic One", "cursive"]
 			}
 		}
 	},
