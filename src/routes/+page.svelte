@@ -1,5 +1,4 @@
 <script lang="ts"> 
-    import { onMount } from "svelte";
     import type { Writable } from "svelte/store";
 
     import Footer from "$lib/Footer.svelte";
@@ -11,7 +10,7 @@
     import SnapScroll from "$lib/SnapScroll.svelte";
 	import { browser } from "$app/environment";
 
-    let mount: boolean = false;
+    let mount = false;
 
     if(browser) mount = true;
 
@@ -22,7 +21,7 @@
 
     let innerHeight: number;
     let position: Writable<number>;
-    let active: {[key: number]: boolean} = {};
+    let active: { [key: number]: boolean } = {};
 </script>
 
 <svelte:window bind:innerHeight></svelte:window>

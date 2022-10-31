@@ -1,23 +1,25 @@
 <script lang="ts">
+	import type { WithTarget } from "src/app";
+
     import { goto } from "$app/navigation";
 
     import { page } from "$app/stores";
 
     import { onMount } from "svelte";
-import { current_component } from "svelte/internal";
+
     import { writable } from "svelte/store";
 
     export let sections: string[];
     export let height: number[] | number;
-    export let wheellock: number = 500;
+    export let wheellock = 500;
     export let position = writable(0);
-    export let active: {[key: number]: boolean} = {};
+    export let active: { [key: number]: boolean } = {};
 
-    let _position: number = 0;
-    let activeTm: {[key: number]: NodeJS.Timeout} = {};
+    let _position = 0;
+    let activeTm: { [key: number]: number } = {};
 
     function resetActive(position: number) {
-        activeTm[position] = setTimeout(() => active[position] = false, 300);
+        activeTm[position] = window.setTimeout(() => active[position] = false, 300);
     }
 
     function clearActive(position: number) {
@@ -25,23 +27,23 @@ import { current_component } from "svelte/internal";
     }
 
     function setActive(position: number) {
-        activeTm[position] = setTimeout(() => active[position] = true, Math.abs(_position - position) * 90 + 90);
+        activeTm[position] = window.setTimeout(() => active[position] = true, Math.abs(_position - position) * 90 + 90);
     }
     
-    let wheelLocked: boolean = false;
+    let wheelLocked = false;
     let scrollY: number;
     
-    let gotoPosition: number = 0;
+    let gotoPosition = 0;
     
     $: if(height) gotoPosition = calculatePosition($position, height);
 
     let scroll = writable(false);
-    let scrollTm: NodeJS.Timeout;
+    let scrollTm: number;
     $: {
         clearInterval(scrollTm);
         let _scroll = $position === sections.length - 1;
         if(_scroll !== $scroll) {
-            if(_scroll) scrollTm = setTimeout(() => $scroll = true, 500);
+            if(_scroll) scrollTm = window.setTimeout(() => $scroll = true, 500);
             else $scroll = false;
         }
     };
@@ -83,7 +85,7 @@ import { current_component } from "svelte/internal";
         });
     });
 
-    const onWheel = function(e) {
+    function onWheel(e: WithTarget<WheelEvent, HTMLDivElement>) {
         if(scrollY === 0) {
             if(wheelLocked) e.preventDefault();
             else {
@@ -96,21 +98,21 @@ import { current_component } from "svelte/internal";
                 }
             }
         }
-    } as svelte.JSX.WheelEventHandler<HTMLDivElement>;
+    };
 
     let touchStart: number;
     let touchMove: number;
 
-    const onTouchStart = function(e) {
+    function onTouchStart(e: WithTarget<TouchEvent, HTMLDivElement>) {
         touchStart = e.touches[0].clientY;
-    } as svelte.JSX.TouchEventHandler<HTMLDivElement>;
+    };
     
-    const onTouchMove = function(e) {
+    function onTouchMove(e: WithTarget<TouchEvent, HTMLDivElement>) {
         touchMove = e.touches[0].clientY;
 
-    } as svelte.JSX.TouchEventHandler<HTMLDivElement>;
+    };
     
-    const onTouchEnd = function(e) {
+    function onTouchEnd(e: WithTarget<TouchEvent, HTMLDivElement>) {
         if(scrollY === 0 && (e.target as HTMLElement).nodeName === "SECTION") {
             const dy = touchStart - touchMove;
 
@@ -119,9 +121,9 @@ import { current_component } from "svelte/internal";
         }
 
         touchStart = 0;
-    } as svelte.JSX.TouchEventHandler<HTMLDivElement>;
+    };
     
-    const onKeyDown = function(e) {
+    function onKeyDown(e: WithTarget<KeyboardEvent, Window>) {
         if(scrollY === 0) {
             let deltaY = e.key === "ArrowDown" ? 1 : (e.key === "ArrowUp" ? -1 : 0);
             let _position = $position + deltaY;
@@ -130,7 +132,7 @@ import { current_component } from "svelte/internal";
                 $position = _position;
             }
         }
-    } as svelte.JSX.KeyboardEventHandler<Window>;
+    };
 </script>
 
 <svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>

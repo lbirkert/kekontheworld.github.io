@@ -34,7 +34,9 @@ body::-webkit-scrollbar {
 		@apply box-border;
 	} */
 
-	h1, h2, h3 {
+	h1,
+	h2,
+	h3 {
 		@apply text-black dark:text-white font-bold;
 	}
 
@@ -63,10 +65,9 @@ body::-webkit-scrollbar {
 			bg-gray-900/50 rounded-lg outline-none border-none;
 	}
 
-
-    input[type="checkbox"] {
-        --cisize: 20px;
-	    --csize: 16px;
+	input[type="checkbox"] {
+		--cisize: 20px;
+		--csize: 16px;
 		@apply cursor-pointer border-none outline-none
 			   appearance-none w-[calc(var(--cisize)*2)] h-[var(--cisize)]
 			   p-[calc(calc(var(--cisize)-var(--csize))/2)] rounded-xl
@@ -77,7 +78,7 @@ body::-webkit-scrollbar {
 			   bg-black dark:bg-white
 			   dark:checked:bg-orange-500
 			   checked:bg-red-600;
-    }
+	}
 
 	a {
 		@apply text-black hover:text-black/80 dark:text-white/90 dark:hover:text-white/75;
