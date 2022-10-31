@@ -1,0 +1,5 @@
+{
+	"watch": ".",
+	"ext": "frag, vert",
+	"exec": "node convert.js"
+}

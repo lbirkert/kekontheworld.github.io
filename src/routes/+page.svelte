@@ -10,9 +10,7 @@
     import SnapScroll from "$lib/SnapScroll.svelte";
 	import { browser } from "$app/environment";
 
-    let mount = false;
-
-    if(browser) mount = true;
+    let mount = browser;
 
     const sections = [
         "about", "experience",

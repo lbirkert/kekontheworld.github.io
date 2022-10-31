@@ -3,12 +3,9 @@
 	import Footer from "$lib/Footer.svelte";
 	import Navbar from "$lib/Navbar.svelte";
 
-    let mount = false;
+    let mount = browser;
 
-    if(browser) {
-        document.body.classList.add("scroll");
-        mount = true;
-    }
+    if(mount) document.body.classList.add("scroll");
 </script>
 
 <svelte:head>
