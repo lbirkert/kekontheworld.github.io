@@ -28,7 +28,9 @@
     <title>KekOnTheWorld | 🎃 Happy Halloween</title>
 </svelte:head>
 
-<div class="wrapper" class:mount id="about">
+{#each sections as section}<div id={section}/>{/each}
+
+<div class="wrapper" class:mount>
     <Navbar bind:position={$position}/>
     <main class="h-screen">
         <SnapScroll {sections} height={innerHeight} bind:position bind:active>

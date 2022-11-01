@@ -81,7 +81,7 @@ body::-webkit-scrollbar {
 	}
 
 	a {
-		@apply text-black hover:text-black/80 dark:text-white/90 dark:hover:text-white/75;
+		@apply text-black hover:text-red-900/60 dark:text-white/90 dark:hover:text-white/60;
 	}
 
 	.active {

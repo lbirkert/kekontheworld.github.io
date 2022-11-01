@@ -59,20 +59,22 @@
 
     .mobile {
         @apply sm:hidden flex fixed flex-col items-center z-20 top-0 left-0 
-             backdrop-blur-lg h-screen px-6 w-full opacity-0
+             h-screen px-6 w-full backdrop-blur-lg opacity-0
              duration-300 pointer-events-none py-20;
     }
     .mobile.menu {
-        @apply transition-opacity pointer-events-auto opacity-100;
+        @apply pointer-events-auto opacity-100;
+        /* Transition temporarily removed because of performance concerns */
+        /* @apply transition-opacity */
     }
 
     .mobile a {
         @apply font-medium flex items-center justify-center w-full h-full
-             text-2xl opacity-0 translate-y-10 font-dela scale-125;
+             text-2xl opacity-0 font-dela translate-y-10 scale-125 will-change-transform;
     }
 
     .mobile.menu a {
-        @apply transition-[transform,opacity] transform-none opacity-100 duration-500;
+        @apply transition-[transform,opacity] opacity-100 duration-700 transform-none;
     }
     .links a {
             @apply font-inter text-base block transition-none font-medium;

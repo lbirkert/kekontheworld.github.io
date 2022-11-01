@@ -12,19 +12,15 @@
 
 <div id="bg">
 	<Halloween/>
+	<div/>
 </div>
-<div class="wash"></div>
 
 <div id="root">
 	<slot />
 </div>
 
 <style lang="postcss">
-	.wash {
-		@apply backdrop-blur-sm fixed top-0 left-0 w-screen h-screen bg-white/60 -z-10;
-	}
-
-	:global(head.dark ~ body) .wash {
-		@apply bg-black/60;
+	#bg div {
+		@apply backdrop-blur-md fixed top-0 left-0 w-screen h-screen bg-white/60 -z-10 dark:bg-black/60;
 	}
 </style>
