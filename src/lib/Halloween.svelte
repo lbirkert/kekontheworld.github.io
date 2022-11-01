@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
     import { ShaderMaterial, PlaneGeometry } from 'three'
     import {
         AmbientLight,
@@ -12,16 +12,11 @@
 
     import vertexShader from "$lib/shaders/halloween.vert.js";
     import fragmentShader from "$lib/shaders/halloween.frag.js";
-	import type { WithTarget } from 'src/app';
-	import { darkMode } from './theme';
 
     const material = new ShaderMaterial({
         uniforms: {
             time: { value: 1.0 },
-            frame: { value: 1 },
-            point: { value: [0.5, 0.5 ]},
-            dim: { value: [ 0, 0 ]},
-            dark: { value: false }
+            frame: { value: 1 }
         },
         fragmentShader: fragmentShader,
         vertexShader: vertexShader
@@ -39,19 +34,7 @@
     let mount = browser;
 
     if(mount) animate();
-
-    let innerWidth: number = 0, innerHeight: number = 0;
-    
-    function mousemove(e: WithTarget<MouseEvent, Window>) {
-        const { clientX, clientY } = e;
-        material.uniforms.point.value = [clientX, innerHeight - clientY];
-    }
-    
-    $: material.uniforms.dim.value = [ innerWidth, innerHeight ];
-    $: material.uniforms.dark.value = $darkMode;
 </script>
-
-<svelte:window on:mousemove={mousemove} bind:innerHeight bind:innerWidth />
 
 <main class:mount>
     <Canvas dpr={0.15} flat>
