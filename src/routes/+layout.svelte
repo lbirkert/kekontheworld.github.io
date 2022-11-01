@@ -13,17 +13,18 @@
 <div id="bg">
 	<Halloween/>
 </div>
+<div class="wash"></div>
 
 <div id="root">
 	<slot />
 </div>
 
 <style lang="postcss">
-	#root {
-        @apply bg-white/50;
-    }
+	.wash {
+		@apply backdrop-blur-sm fixed top-0 left-0 w-screen h-screen bg-white/60 -z-10;
+	}
 
-	:global(head.dark ~ body) #root {
-		@apply bg-black/40;
+	:global(head.dark ~ body) .wash {
+		@apply bg-black/60;
 	}
 </style>

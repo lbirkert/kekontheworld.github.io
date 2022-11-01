@@ -23,10 +23,7 @@
     ];
 </script>
 
-<nav class="backdrop-blur-sm max-w-6xl top-0 left-[50%] -translate-x-[50%] self-center
-            h-16 sm:h-14 px-[max(1rem,4vw)] py-2 sm:py-2 w-full z-10 fixed
-            flex items-center justify-between">
-
+<nav>
     <button on:click={() => menu = !menu}>
         <img 
             draggable="false"
@@ -54,8 +51,14 @@
 </div>
 
 <style lang="postcss">
+    nav {
+        @apply max-w-6xl top-0 left-[50%] -translate-x-[50%] self-center
+               h-16 sm:h-14 px-[max(1rem,4vw)] py-2 sm:py-2 w-full z-10 fixed
+               flex items-center justify-between;
+    }
+
     .mobile {
-        @apply sm:hidden flex fixed flex-col items-center z-10 top-0 left-0 
+        @apply sm:hidden flex fixed flex-col items-center z-20 top-0 left-0 
              backdrop-blur-lg h-screen px-6 w-full opacity-0
              duration-300 pointer-events-none py-20;
     }

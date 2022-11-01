@@ -37,7 +37,7 @@
 </script>
 
 <main class:mount>
-    <Canvas>
+    <Canvas size={{ width: -10, height: -10 }} flat>
         <OrthographicCamera position={{ x: 0, y: 0, z: 1 }}/>
 
         <DirectionalLight shadow position={{ x: 3, y: 10, z: 10 }} />
@@ -56,6 +56,10 @@
 <style>
     main {
         @apply w-screen h-screen fixed top-0 left-0 transition-opacity duration-1000 opacity-0 -z-10;
+    }
+
+    main > :global(canvas) {
+        @apply w-screen h-screen;
     }
 
     main.mount {
