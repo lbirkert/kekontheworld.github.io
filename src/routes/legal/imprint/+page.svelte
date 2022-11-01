@@ -86,7 +86,7 @@
 <style lang="postcss">
     main {
         @apply min-h-screen py-24 font-inter flex flex-col 
-               gap-y-12 px-5;
+               gap-y-12 px-1.5 items-center;
     }
 
     h1 {
@@ -102,7 +102,7 @@
     }
 
     p {
-        @apply sm:text-lg text-base;
+        @apply sm:text-lg text-base max-w-3xl;
     }
 
     .wrapper {

@@ -4,7 +4,6 @@ import { minify } from "html-minifier-terser";
 const minification_options = {
 	collapseWhitespace: true,
 	collapseInlineTagWhitespace: true,
-	removeComments: true,
 	ignoreCustomComments: [/^#/],
 	minifyCSS: true,
 	minifyJS: true,
