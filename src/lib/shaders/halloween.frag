@@ -2,6 +2,7 @@ varying vec2 vUv;
 
 uniform float     time;                 // shader playback time (in seconds)
 uniform int       frame;                // shader playback frame
+uniform bool      dark;                // darkmode
 
 float map(vec3 p)
 {
@@ -23,14 +24,19 @@ float trace(vec3 p, vec3 d)
 }
 
 void main() {
-    float tt = step(mod(time+4.0,10.0),3.0);
+    // float tt = step(mod(time+4.0,10.0),3.0);
+	float tt = (sin(time * 0.2) + 1.) / 10.;
 	vec3 dir = normalize(vec3(vUv, 1.0));
 	vec3 pos = vec3(0, 0, time*(0.8+tt*4.0));
+	
 	float t = trace(pos, dir);
+
 	vec3 col = vec3(t*0.1,t*0.07,t*0.07);
+
 	col -= abs(sin(time+t*2.0)*0.05);
-	if (tt>0.0)
-		col = 0.7-col;
+
+	if (!dark) col = 0.7-col;
+
 	vec2 q = vUv;
     float v = 0.5 + 0.5*pow( 16.0*q.x*q.y*(1.0-q.x)*(1.0-q.y), 0.25 );
 	gl_FragColor = vec4(col*v, 1.0);
