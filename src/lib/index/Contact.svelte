@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DISCORD_URL } from "$lib/config";
+	import { DISCORD_URL, EMAIL } from "$lib/config";
 	import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 	import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 	import Fa from "svelte-fa";
@@ -14,7 +14,7 @@
         <a href={DISCORD_URL}>
             <Fa icon={faDiscord}/> Discord
         </a>
-        <a href={DISCORD_URL}>
+        <a href="mailto:{EMAIL}">
             <Fa icon={faMailBulk}/> Email
         </a>
     </div>
