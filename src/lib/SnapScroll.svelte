@@ -152,6 +152,6 @@
     }
 
     .wrapper {
-        @apply min-h-full transition-transform duration-500;
+        @apply min-h-full transition-transform duration-500 will-change-transform;
     }
 </style>

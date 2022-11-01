@@ -1,12 +1,19 @@
 <script lang="ts">
-    // svelte-ignore unused-export-let
     export let active: boolean;
 </script>
 
-<section 
-    class="full flex items-center justify-center flex-col gap-5 px-5"
->
-    <h1 class="text-4xl">
+<section class="full" class:active>
+    <h1>
         Projects
     </h1>
 </section>
+
+<style lang="postcss">
+    section {
+        @apply flex items-center justify-center flex-col gap-5 px-5;
+    }
+
+    section > h1 {
+        @apply sm:text-4xl text-3xl;
+    }
+</style>

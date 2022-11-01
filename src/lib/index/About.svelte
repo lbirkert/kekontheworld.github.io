@@ -1,9 +1,9 @@
 <script lang="ts">
-    import FlyinText from "$lib/FlyinText.svelte";
-
-	import Timesince from "$lib/Timesince.svelte";
-
+	import { DISCORD_URL, GITHUB_URL, GITLAB_URL, TWITCH_URL, TWITTER_URL, YOUTUBE_URL } from "$lib/config";
     import { faDiscord, faGithub, faGitlab, faTwitch, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+    
+    import FlyinText from "$lib/FlyinText.svelte";
+	import Timesince from "$lib/Timesince.svelte";
 
     import Fa from "svelte-fa";
 
@@ -19,22 +19,22 @@
         He has been coding since <Timesince time={new Date("2020-1-8 9:15")}/> and is heavily <a href="#experience">experienced</a> in Front- and Backend development.
     </p>
     <div class="socials">
-        <a href="https://discord.gg/Cq2UpzeTnm" target="_blank" rel="noreferrer" aria-label="Discord">
+        <a href={DISCORD_URL} target="_blank" rel="noreferrer" aria-label="Discord">
             <Fa icon={faDiscord}/>
         </a>
-        <a href="https://github.com/KekOnTheWorld/" target="_blank" rel="noreferrer" aria-label="Github">
+        <a href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="Github">
             <Fa icon={faGithub}/>
         </a>
-        <a href="https://gitlab.com/KekOnTheWorld" target="_blank" rel="noreferrer" aria-label="Gitlab">
+        <a href={GITLAB_URL} target="_blank" rel="noreferrer" aria-label="Gitlab">
             <Fa icon={faGitlab}/>
         </a>
-        <a href="https://twitter.com/KekOnTheWorld" target="_blank" rel="noreferrer" aria-label="Twitter">
+        <a href={TWITTER_URL} target="_blank" rel="noreferrer" aria-label="Twitter">
             <Fa icon={faTwitter}/>
         </a>
-        <a href="https://twitch.tv/KekOnTheWorld" target="_blank" rel="noreferrer" aria-label="Twitch">
+        <a href={TWITCH_URL} target="_blank" rel="noreferrer" aria-label="Twitch">
             <Fa icon={faTwitch}/>
         </a>
-        <a href="https://www.youtube.com/channel/UCn-EuwrJNTYtkBS-r_XudjA" target="_blank" rel="noreferrer" aria-label="Youtube">
+        <a href={YOUTUBE_URL} target="_blank" rel="noreferrer" aria-label="Youtube">
             <Fa icon={faYoutube}/>
         </a>
     </div>
@@ -42,7 +42,7 @@
 
 <style lang="postcss">
     section {
-        @apply flex items-center justify-center flex-col gap-5 px-5;
+        @apply flex items-center justify-center flex-col gap-7 px-5;
     }
 
     section > h1 {
@@ -50,7 +50,7 @@
     }
 
     section > p {
-        @apply font-[Inter] max-w-2xl transition-[opacity,transform] 
+        @apply font-inter max-w-2xl transition-[opacity,transform] 
             opacity-0 translate-y-10 scale-150 sm:text-lg text-base;
     }
 
