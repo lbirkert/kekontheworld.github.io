@@ -1,7 +1,8 @@
+precision highp float;
+
 varying vec2 vUv;
 
 uniform float     time;                 // shader playback time (in seconds)
-uniform int       frame;                // shader playback frame
 
 float map(vec3 p)
 {
