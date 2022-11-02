@@ -1,55 +1,42 @@
-<script>
-    import { ShaderMaterial, PlaneGeometry } from 'three'
-    import {
-        AmbientLight,
-        Canvas,
-        DirectionalLight,
-        Mesh,
-        OrthographicCamera
-    } from '@threlte/core'
-
-	import { browser } from '$app/environment';
+<script lang="ts">
+    import { browser } from '$app/environment';
 
     import vertexShader from "$lib/shaders/halloween.vert.js";
     import fragmentShader from "$lib/shaders/halloween.frag.js";
 
-    const material = new ShaderMaterial({
-        uniforms: {
-            time: { value: 1.0 },
-            frame: { value: 1 }
-        },
-        fragmentShader: fragmentShader,
-        vertexShader: vertexShader
-    });
-    
-    function animate() {
-        requestAnimationFrame( animate );
+	import { Canvas, Camera, Mesh, Scene } from "svelte-ogl";
+	import { Program, Plane } from "ogl";
 
-        let time = performance.now() / 1000;
-
-        material.uniforms.time.value = time;
-        material.uniforms.frame.value += 1;
-    }
+	const uniforms = { time: { value: 0 } };
 
     let mount = browser;
-
-    if(mount) animate();
 </script>
 
 <main class:mount>
-    <Canvas dpr={0.15} flat>
-        <OrthographicCamera position={{ x: 0, y: 0, z: 1 }}/>
+    <Canvas
+        on:render={(e) => {
+            uniforms.time.value = e.detail.time / 1000;
+            console.log(uniforms);
+        }}
+        dpr={0.15}
+    >
+        <Camera />
 
-        <DirectionalLight shadow position={{ x: 3, y: 10, z: 10 }} />
-        <DirectionalLight position={{ x: -3, y: 10, z: -10 }} intensity={0.2} />
-        <AmbientLight intensity={0.2} />
-
-        <!-- Cube -->
-        <Mesh
-            position={{ x: 0, y: 0, z: 0 }}
-            geometry={new PlaneGeometry(2, 2, 2)}
-            material={material}
-        />
+        <Scene>
+            <Mesh
+                program={(gl) =>
+                    new Program(gl, {
+                        vertex: vertexShader,
+                        fragment: fragmentShader,
+                        uniforms
+                    })}
+                geometry={(gl) =>
+                    new Plane(gl, {
+                        width: 2,
+                        height: 2
+                    })}
+            />
+        </Scene>
     </Canvas>
 </main>
 
