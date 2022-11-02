@@ -14,10 +14,7 @@
 
 <main class:mount>
     <Canvas
-        on:render={(e) => {
-            uniforms.time.value = e.detail.time / 1000;
-            console.log(uniforms);
-        }}
+        on:render={(e) => uniforms.time.value = e.detail.time / 1000}
         dpr={0.15}
     >
         <Camera />
