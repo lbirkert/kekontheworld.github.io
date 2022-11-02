@@ -137,8 +137,8 @@
 
 <svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>
 
-<div class="scroller" on:wheel={onWheel}
-    on:touchstart={onTouchStart} on:touchend={onTouchEnd}
+<div class="scroller" on:wheel|passive={onWheel}
+    on:touchstart|passive={onTouchStart} on:touchend|passive={onTouchEnd}
     on:touchmove={onTouchMove}>
     <div class="wrapper" style:transform="translateY(-{gotoPosition}px)">
         <slot/>
