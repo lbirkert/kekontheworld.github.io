@@ -13,8 +13,7 @@
 
 <style lang="postcss">
     span {
-        display: inline-block;
-        opacity: 0;
+        @apply inline-block opacity-0 transform-gpu;
     }
 
     span.flyin {

@@ -74,7 +74,7 @@
     }
 
     .mobile.menu a {
-        @apply transition-[transform,opacity] opacity-100 duration-700 transform-none;
+        @apply transition-[transform,opacity] opacity-100 duration-700 translate-y-0;
     }
     .links a {
             @apply font-inter text-base block transition-none font-medium;

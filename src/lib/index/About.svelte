@@ -51,7 +51,7 @@
 
     section > p {
         @apply font-inter max-w-2xl transition-[opacity,transform] 
-            opacity-0 translate-y-10 scale-150 sm:text-lg text-base;
+            opacity-0 translate-y-10 scale-150 sm:text-lg text-base transform-gpu;
     }
 
     section.active > p {
@@ -70,7 +70,7 @@
     }
 
     .socials a {
-        @apply transition-[transform,opacity] translate-y-5 opacity-0;
+        @apply transition-[transform,opacity] translate-y-5 opacity-0 transform-gpu;
     }
     
     section.active .socials a {

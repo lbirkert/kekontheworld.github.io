@@ -1,10 +1,12 @@
 <script lang="ts">
+	import FlyinText from "$lib/FlyinText.svelte";
+
     export let active: boolean;
 </script>
 
 <section class="full" class:active>
     <h1>
-        Experience
+        <FlyinText text="Experience" flyin={active} delay={300} />
     </h1>
 </section>
 
