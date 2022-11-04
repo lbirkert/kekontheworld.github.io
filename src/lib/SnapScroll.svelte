@@ -9,6 +9,9 @@
 
     import { writable } from "svelte/store";
 
+    import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+    import Fa from "svelte-fa";
+
     export let sections: string[];
     export let height: number[] | number;
     export let wheellock = 500;
@@ -67,6 +70,13 @@
         page.subscribe(p => {
             let _hash = p.url.hash.substring(1);
             let _position = sections.indexOf(_hash);
+            
+            if(_hash === "footer") {
+                $position = sections.length - 1;
+                scrollY = -1;
+                return;
+            }
+
             if(_position === -1) _position = 0;
             if(_position !== $position) $position = _position;
         });
@@ -86,9 +96,9 @@
     });
 
     function onWheel(e: WithTarget<WheelEvent, HTMLDivElement>) {
+        console.log("WHEEL", e);
         if(scrollY === 0) {
-            if(wheelLocked) e.preventDefault();
-            else {
+            if(!wheelLocked) {
                 let deltaY = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0);
                 let _position = $position + deltaY;
                 
@@ -112,12 +122,15 @@
 
     };
     
-    function onTouchEnd(e: WithTarget<TouchEvent, HTMLDivElement>) {
-        if(scrollY === 0 && (e.target as HTMLElement).nodeName === "SECTION") {
+    function onTouchEnd(/*e: WithTarget<TouchEvent, HTMLDivElement>*/) {
+        /* && (e.target as HTMLElement).nodeName === "SECTION" Removed to provide smoother scroll experience */
+        if(scrollY === 0 && touchMove !== -1) {
             const dy = touchStart - touchMove;
 
-            if(dy > 20 && $position + 1 < sections.length) $position++;
-            else if(dy < 20 && $position > 0) $position--;
+            if(dy > 100 && $position + 1 < sections.length) $position++;
+            else if(dy < 100 && $position > 0) $position--;
+
+            touchMove = -1;
         }
 
         touchStart = 0;
@@ -138,20 +151,48 @@
 <svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>
 
 <div class="scroller" on:wheel|passive={onWheel}
-    on:touchstart|passive={onTouchStart} on:touchend|passive={onTouchEnd}
+    class:active={active[$position]}
+    on:touchstart|passive={onTouchStart} on:touchend={onTouchEnd}
     on:touchmove={onTouchMove}>
+    
+    {#if scrollY === 0 && $position !== 0}
+    <button class="up" on:click|preventDefault={() => $position--} aria-label="Scroll up">
+        <Fa icon={faArrowUp} />
+    </button>
+    {/if}
+
     <div class="wrapper" style:transform="translateY(-{gotoPosition}px)">
         <slot/>
     </div>
+
+    {#if scrollY === 0}
+    <button class="down" on:click|preventDefault={() => {
+        if($position !== sections.length - 1) $position++;
+        else goto("#footer");
+    }} aria-label="Scroll down">
+        <Fa icon={faArrowDown} />
+    </button>
+    {/if}
 </div>
 
 <style lang="postcss">
     .scroller {
-        height: 100%;
-        overflow: hidden;
+        @apply h-full overflow-hidden relative flex justify-center flex-col items-center;
     }
 
     .wrapper {
         @apply min-h-full transition-transform duration-500 will-change-transform;
+    }
+
+    .scroller .down, .scroller .up {
+        @apply absolute text-2xl animate-bounce opacity-0 w-20 h-20 flex items-center justify-center
+            dark:text-white/40 text-black/40 cursor-pointer z-10;
+    }
+
+    .scroller .down {@apply bottom-0}
+    .scroller .up {@apply top-0}
+
+    .scroller.active .down, .scroller.active .up {
+        @apply opacity-100 transition-opacity duration-1000 delay-1000;
     }
 </style>
