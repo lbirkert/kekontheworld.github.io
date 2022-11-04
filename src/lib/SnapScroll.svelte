@@ -87,8 +87,7 @@
 
     function onWheel(e: WithTarget<WheelEvent, HTMLDivElement>) {
         if(scrollY === 0) {
-            if(wheelLocked) e.preventDefault();
-            else {
+            if(!wheelLocked) {
                 let deltaY = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0);
                 let _position = $position + deltaY;
                 
