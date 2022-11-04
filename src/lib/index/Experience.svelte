@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { EXPERIENCE_LANGS } from "$lib/config";
-	import { faCss3 } from "@fortawesome/free-brands-svg-icons";
 	import Fa from "svelte-fa";
 
     export let active: boolean;

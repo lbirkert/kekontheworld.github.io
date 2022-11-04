@@ -122,7 +122,7 @@
 
     };
     
-    function onTouchEnd(e: WithTarget<TouchEvent, HTMLDivElement>) {
+    function onTouchEnd(/*e: WithTarget<TouchEvent, HTMLDivElement>*/) {
         /* && (e.target as HTMLElement).nodeName === "SECTION" Removed to provide smoother scroll experience */
         if(scrollY === 0 && touchMove !== -1) {
             const dy = touchStart - touchMove;
@@ -152,7 +152,7 @@
 
 <div class="scroller" on:wheel|passive={onWheel}
     class:active={active[$position]}
-    on:touchstart|passive={onTouchStart} on:touchend|passive={onTouchEnd}
+    on:touchstart|passive={onTouchStart} on:touchend={onTouchEnd}
     on:touchmove={onTouchMove}>
     
     {#if scrollY === 0 && $position !== 0}
