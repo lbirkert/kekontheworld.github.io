@@ -112,7 +112,7 @@
         @apply dark:text-black text-white;
     }
 
-    .bar div > .perc {@apply  left-0 translate-x-[calc(calc(min(100vw,36rem)-100%)-12px)];}
+    .bar div > .perc {@apply  left-0 translate-x-[calc(calc(min(calc(100vw-48px),calc(36rem-8px))-100%))];}
     .bar div > .name {@apply left-2;}
 
     .bar p {
