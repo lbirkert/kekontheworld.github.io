@@ -1,40 +1,7 @@
 <script lang="ts">
-    export let active: boolean;
+	import { EXPERIENCE_LANGS } from "$lib/config";
 
-    const langs = [
-        {
-            name: "CSS",
-            perc: "100%"
-        },
-        {
-            name: "HTML",
-            perc: "95%"
-        },
-        {
-            name: "JavaScript",
-            perc: "90%"
-        },
-        {
-            name: "TypeScript",
-            perc: "90%"
-        },
-        {
-            name: "Python",
-            perc: "90%"
-        },
-        {
-            name: "C",
-            perc: "80%"
-        },
-        {
-            name: "C#",
-            perc: "70%"
-        },
-        {
-            name: "PHP",
-            perc: "30%"
-        },
-    ]
+    export let active: boolean;
 </script>
 
 <section class="full" class:active>
@@ -46,7 +13,7 @@
         performant and efficient Software.
     </p>
     <ul class="langs">
-        {#each langs as lang, i}
+        {#each EXPERIENCE_LANGS as lang, i}
         <li class="bar" style="transition-delay: {active ? i*100 + 300 : 0}ms">
             <p class="name">{lang.name}</p>
             <div style="width: {active?lang.perc:0}; transition-delay: {active ? i*100 + 500 : 0}ms">

@@ -96,6 +96,7 @@
     });
 
     function onWheel(e: WithTarget<WheelEvent, HTMLDivElement>) {
+        console.log("WHEEL", e);
         if(scrollY === 0) {
             if(!wheelLocked) {
                 let deltaY = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0);
@@ -122,11 +123,14 @@
     };
     
     function onTouchEnd(e: WithTarget<TouchEvent, HTMLDivElement>) {
-        if(scrollY === 0 && (e.target as HTMLElement).nodeName === "SECTION") {
+        /* && (e.target as HTMLElement).nodeName === "SECTION" Removed to provide smoother scroll experience */
+        if(scrollY === 0 && touchMove !== -1) {
             const dy = touchStart - touchMove;
 
-            if(dy > 20 && $position + 1 < sections.length) $position++;
-            else if(dy < 20 && $position > 0) $position--;
+            if(dy > 100 && $position + 1 < sections.length) $position++;
+            else if(dy < 100 && $position > 0) $position--;
+
+            touchMove = -1;
         }
 
         touchStart = 0;
@@ -142,8 +146,6 @@
             }
         }
     };
-
-    $: console.log($page.url.hash.endsWith("footer"));
 </script>
 
 <svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>
@@ -153,8 +155,8 @@
     on:touchstart|passive={onTouchStart} on:touchend|passive={onTouchEnd}
     on:touchmove={onTouchMove}>
     
-    {#if $position !== 0}
-    <button class="up" on:click={() => $position--} aria-label="Scroll up">
+    {#if scrollY === 0 && $position !== 0}
+    <button class="up" on:click|preventDefault={() => $position--} aria-label="Scroll up">
         <Fa icon={faArrowUp} />
     </button>
     {/if}
@@ -163,8 +165,8 @@
         <slot/>
     </div>
 
-    {#if $page.url.hash !== "#footer"}
-    <button class="down" on:click={() => {
+    {#if scrollY === 0}
+    <button class="down" on:click|preventDefault={() => {
         if($position !== sections.length - 1) $position++;
         else goto("#footer");
     }} aria-label="Scroll down">
@@ -175,7 +177,7 @@
 
 <style lang="postcss">
     .scroller {
-        @apply h-full overflow-hidden relative;
+        @apply h-full overflow-hidden relative flex justify-center flex-col items-center;
     }
 
     .wrapper {
@@ -183,12 +185,12 @@
     }
 
     .scroller .down, .scroller .up {
-        @apply absolute text-2xl animate-bounce opacity-0 
+        @apply absolute text-2xl animate-bounce opacity-0 w-20 h-20 flex items-center justify-center
             dark:text-white/40 text-black/40 cursor-pointer z-10;
     }
 
-    .scroller .down {@apply bottom-10}
-    .scroller .up {@apply top-10}
+    .scroller .down {@apply bottom-0}
+    .scroller .up {@apply top-0}
 
     .scroller.active .down, .scroller.active .up {
         @apply opacity-100 transition-opacity duration-1000 delay-1000;
