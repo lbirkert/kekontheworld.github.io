@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<footer class="py-4 font-inter">
+<footer class="py-4 font-inter" id="footer">
     <p>&copy; <span class="font-dela">KekOnTheWorld</span> 2022</p>
     <div class="links">
         <a href="/legal/imprint">Imprint</a>

@@ -9,6 +9,9 @@
 
     import { writable } from "svelte/store";
 
+    import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+    import Fa from "svelte-fa";
+
     export let sections: string[];
     export let height: number[] | number;
     export let wheellock = 500;
@@ -67,6 +70,13 @@
         page.subscribe(p => {
             let _hash = p.url.hash.substring(1);
             let _position = sections.indexOf(_hash);
+            
+            if(_hash === "footer") {
+                $position = sections.length - 1;
+                scrollY = -1;
+                return;
+            }
+
             if(_position === -1) _position = 0;
             if(_position !== $position) $position = _position;
         });
@@ -132,25 +142,55 @@
             }
         }
     };
+
+    $: console.log($page.url.hash.endsWith("footer"));
 </script>
 
 <svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>
 
 <div class="scroller" on:wheel|passive={onWheel}
+    class:active={active[$position]}
     on:touchstart|passive={onTouchStart} on:touchend|passive={onTouchEnd}
     on:touchmove={onTouchMove}>
+    
+    {#if $position !== 0}
+    <button class="up" on:click={() => $position--} aria-label="Scroll up">
+        <Fa icon={faArrowUp} />
+    </button>
+    {/if}
+
     <div class="wrapper" style:transform="translateY(-{gotoPosition}px)">
         <slot/>
     </div>
+
+    {#if $page.url.hash !== "#footer"}
+    <button class="down" on:click={() => {
+        if($position !== sections.length - 1) $position++;
+        else goto("#footer");
+    }} aria-label="Scroll down">
+        <Fa icon={faArrowDown} />
+    </button>
+    {/if}
 </div>
 
 <style lang="postcss">
     .scroller {
-        height: 100%;
-        overflow: hidden;
+        @apply h-full overflow-hidden relative;
     }
 
     .wrapper {
         @apply min-h-full transition-transform duration-500 will-change-transform;
+    }
+
+    .scroller .down, .scroller .up {
+        @apply absolute text-2xl animate-bounce opacity-0 
+            dark:text-white/40 text-black/40 cursor-pointer z-10;
+    }
+
+    .scroller .down {@apply bottom-10}
+    .scroller .up {@apply top-10}
+
+    .scroller.active .down, .scroller.active .up {
+        @apply opacity-100 transition-opacity duration-1000 delay-1000;
     }
 </style>
