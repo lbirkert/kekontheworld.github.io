@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { EXPERIENCE_LANGS } from "$lib/config";
+	import { faCss3 } from "@fortawesome/free-brands-svg-icons";
+	import Fa from "svelte-fa";
 
     export let active: boolean;
 </script>
@@ -15,9 +17,9 @@
     <ul class="langs">
         {#each EXPERIENCE_LANGS as lang, i}
         <li class="bar" style="transition-delay: {active ? i*100 + 300 : 0}ms">
-            <p class="name">{lang.name}</p>
+            <p class="name"><Fa icon={lang.icon}/> {lang.name}</p>
             <div style="width: {active?lang.perc:0}; transition-delay: {active ? i*100 + 500 : 0}ms">
-                <p class="name">{lang.name}</p>
+                <p class="name"><Fa icon={lang.icon}/> {lang.name}</p>
                 <p class="perc">{lang.perc}</p>
             </div>
             <p class="perc">{lang.perc}</p>
@@ -63,7 +65,7 @@
         @apply opacity-100 duration-1000 translate-x-0;
     }
     .bar p {
-        @apply font-inter absolute font-bold;
+        @apply font-inter absolute font-bold flex items-center gap-x-2 whitespace-nowrap;
     }
 
     .bar div {
