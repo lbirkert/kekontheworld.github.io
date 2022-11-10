@@ -127,8 +127,10 @@
         if(scrollY === 0 && touchMove !== -1) {
             const dy = touchStart - touchMove;
 
+            console.log(dy);
+
             if(dy > 100 && $position + 1 < sections.length) $position++;
-            else if(dy < 100 && $position > 0) $position--;
+            else if(dy < -100 && $position > 0) $position--;
 
             touchMove = -1;
         }
