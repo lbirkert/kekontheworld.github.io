@@ -7,6 +7,7 @@ import {
 	faPhp,
 	faPython
 } from "@fortawesome/free-brands-svg-icons";
+import type { License, Project } from "./types";
 
 export const EMAIL = "kekontheworld@gmail.com";
 
@@ -64,7 +65,8 @@ export const LICENSES = {
 		name: "GNU General Public License v3",
 		short: "GNU GPLv3",
 	}
-};
+} as { [key: string]: License };
+
 export const EXTERNAL_LICENSE_URL = "https://oss.kotw.dev/licenses/?id=";
 
 
@@ -191,12 +193,4 @@ export const PROJECTS = [
 		repo: "KekOnTheWorld/Essentials",
 		archive: true
 	},
-] as {
-	title: string,
-	description: string,
-	repo: string,
-	license: keyof typeof LICENSES,
-	demo?: string,
-	archive?: boolean,
-	fork?: string,
-}[];
+] as Project[];
