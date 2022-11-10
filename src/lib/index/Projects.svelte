@@ -1,5 +1,28 @@
 <script lang="ts">
+	import { browser } from "$app/environment";
+	import { PROJECTS } from "$lib/config";
+	import Project from "$lib/Project.svelte";
+
     export let active: boolean;
+
+    let projects = PROJECTS;
+
+    let projectIdx = Math.floor(Math.random() * projects.length);
+
+
+    function move(i: number) {
+        projectIdx = i % projects.length;
+
+        timer();
+    }
+
+    let intv: number;
+    function timer() {
+        if(intv) clearTimeout(intv);
+        intv = window.setTimeout(() => move(projectIdx + 1), 5000);
+    }
+
+    if(browser) timer();
 </script>
 
 <section class="full" class:active>
@@ -11,13 +34,22 @@
     </p>
 
     <div class="projects">
-        
+        <ul style:transform="translateX(calc({projectIdx} * -448px))">
+            {#each projects as project, i}
+                <li class:active={projectIdx === i}><Project {project}/></li>
+            {/each}
+        </ul>
+    </div>
+    <div class="bar">
+        {#each new Array(projects.length).fill(0) as _, i}
+            <button on:click={() => move(i)} class:active={projectIdx === i}/>
+        {/each}
     </div>
 </section>
 
 <style lang="postcss">
     section {
-        @apply flex items-center justify-center flex-col gap-7 px-5;
+        @apply flex items-center justify-center flex-col gap-7 px-5 w-screen;
     }
 
     section > h1, section > p {
@@ -34,4 +66,29 @@
     section.active > h1, section.active > p {
         @apply delay-300 duration-1000 translate-x-0 opacity-100;
     }
+    
+    .bar {
+        @apply flex gap-x-2;
+    }
+
+    .bar button {
+        @apply w-3 h-3 mx-0.5 bg-black dark:bg-white rounded-3xl opacity-20
+            transition-[opacity,transform] duration-1000
+            cursor-pointer;
+    }
+    .bar button.active { @apply scale-125 opacity-80; }
+
+    .projects {
+        @apply relative h-48 w-[448px];
+    }
+
+    .projects ul {
+        @apply absolute flex items-center h-48 transition-transform duration-1000;
+    }
+
+    .projects li {
+        @apply w-[448px] scale-50 opacity-0 transition-[opacity,transform] duration-1000;
+    }
+
+    .projects li.active { @apply scale-100 opacity-100; }
 </style>

@@ -7,6 +7,7 @@ import {
 	faPhp,
 	faPython
 } from "@fortawesome/free-brands-svg-icons";
+import type { License, Project } from "./types";
 
 export const EMAIL = "kekontheworld@gmail.com";
 
@@ -54,3 +55,142 @@ export const EXPERIENCE_LANGS = [
 		icon: faPhp
 	}
 ];
+
+export const LICENSES = {
+	"mit": {
+		name: "MIT License",
+		short: "MIT",
+	},
+	"gpl-3.0": {
+		name: "GNU General Public License v3",
+		short: "GNU GPLv3",
+	}
+} as { [key: string]: License };
+
+export const EXTERNAL_LICENSE_URL = "https://oss.kotw.dev/licenses/?id=";
+
+
+export const PROJECTS = [
+	{
+		title: "kotw.dev",
+		description: "This website is developed entirely opensource.",
+		license: "mit",
+		repo: "KekOnTheWorld/kekontheworld.github.io",
+		demo: "https://kotw.dev"
+	},
+	{
+		title: "UnicodeExplorer",
+		description: "A tool, with which you can explore the unicode landscape.",
+		license: "mit",
+		repo: "KekOnTheWorld/UnicodeExplorer",
+		demo: "https://kotw.dev/UnicodeExplorer"
+	},
+	{
+		title: "VoxelGeometry",
+		description: "Voxel shape Demos written with plain JS and HTML.",
+		license: "mit",
+		repo: "KekOnTheWorld/VoxelGeometry",
+		demo: "https://kotw.dev/VoxelGeometry"
+	},
+	{
+		title: "kekupload-server",
+		description: "A backend providing a HTTP REST like interface for uploading files written in rust.",
+		license: "mit",
+		repo: "KotwOSS/kekupload-server",
+		fork: "KekOnTheWorld/kekupload-server",
+		demo: "https://upload.gamepowerx.com",
+	},
+	{
+		title: "kekupload-client",
+		description: "Frontend made for KekUpload written using SvelteKit.",
+		license: "mit",
+		repo: "KotwOSS/kekupload-client",
+		fork: "KekOnTheWorld/kekupload-client",
+		demo: "https://upload.gamepowerx.com",
+	},
+	{
+		title: "kekupload-lib-ts",
+		description: "A library for KekUpload written in typescript.",
+		license: "mit",
+		repo: "KotwOSS/kekupload-lib-ts",
+		fork: "KekOnTheWorld/kekupload-lib-ts",
+		demo: "https://upload.gamepowerx.com",
+	},
+	{
+		title: "kekupload-cli",
+		description: "A CLI client made for KekUpload.",
+		license: "mit",
+		repo: "CraftingDragon007/KekUploadCLIClient",
+		fork: "KekOnTheWorld/kekupload-cli",
+	},
+	{
+		title: "ReSVG",
+		description: "ReSVG is a advanced SVG compiler which includes many features.",
+		license: "mit",
+		repo: "KotwOSS/resvg",
+		fork: "KekOnTheWorld/resvg",
+	},
+	{
+		title: "Kock Themes",
+		description: "Kock themes are made for real KEKs just like you and me.",
+		license: "mit",
+		repo: "KotwOSS/kock-themes",
+		fork: "KekOnTheWorld/kock-themes",
+		demo: "https://marketplace.visualstudio.com/items?itemName=kotwoss.kock-themes"
+	},
+	{
+		title: "Keks Helper",
+		description: "A moderation and utility Discord Bot.",
+		license: "mit",
+		repo: "KekOnTheWorld/keks-helper",
+		demo: DISCORD_URL
+	},
+	{
+		title: "Port control",
+		description: "Webinterface made for the ESP32 Development board to test circuits.",
+		license: "mit",
+		repo: "KekOnTheWorld/portcontrol",
+	},
+	{
+		title: "Local account",
+		description: "Create accounts using localStorage.",
+		license: "mit",
+		repo: "KekOnTheWorld/localaccount",
+		demo: "https://kotw.dev/localaccount"
+	},
+	{
+		title: "Sample page",
+		description: "Sample html page to put on an otherwise empty file server.",
+		license: "mit",
+		repo: "KekOnTheWorld/sample-page",
+		demo: "https://kotw.dev/sample-page"
+	},
+	{
+		title: "MINHttp",
+		description: "Minimize bandwith by transcoding the HTML in a more efficient standart.",
+		license: "mit",
+		repo: "KekOnTheWorld/MINHttp",
+		archive: true
+	},
+	{
+		title: "Kekson",
+		description: "What happens if you order Gson on wish?",
+		license: "gpl-3.0",
+		repo: "KekOnTheWorld/Kekson",
+		archive: true
+	},
+	{
+		title: "TVideo",
+		description: "A videoplayer for your terminal. (Embedded)",
+		license: "mit",
+		repo: "KekOnTheWorld/TVideo",
+		archive: true
+	},
+	{
+		title: "Essentials",
+		description: "Opensource essentials plugin made for learning purposes.",
+		license: "mit",
+		repo: "KekOnTheWorld/Essentials",
+		archive: true
+	},
+] as Project[];

@@ -46,7 +46,7 @@
 
     .links a {
         @apply flex items-center gap-x-2 font-inter tracking-wider font-semibold
-            border-white dark:border-black/80 border-[1px] rounded-lg px-3 py-1.5 
+            border-white dark:border-black/20 border-[1px] rounded-lg px-3 py-1.5 
             bg-white/30 dark:bg-black/30
             transition-[transform,opacity] opacity-0 
             transform-gpu translate-y-10;

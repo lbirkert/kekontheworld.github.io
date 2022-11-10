@@ -54,7 +54,7 @@ body::-webkit-scrollbar {
 	}
 
 	.full {
-		@apply pt-16 sm:pt-14 min-h-screen;
+		@apply pt-16 sm:pt-14 h-screen;
 	}
 
 	input {
