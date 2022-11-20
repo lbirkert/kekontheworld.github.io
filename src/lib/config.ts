@@ -117,50 +117,57 @@ export const PROJECTS = [
 		demo: "https://kotw.dev/VoxelGeometry"
 	},
 	{
+		title: "svelte-ogl",
+		description: "A typed port of OGL (Open graphics library) to svelte using components. ",
+		license: "mit",
+		repo: "KotwOSS/svelte-ogl",
+		demo: "https://oss.kotw.dev/svelte-ogl"
+	},
+	{
 		title: "kekupload-server",
 		description:
 			"A backend providing a HTTP REST like interface for uploading files written in rust.",
 		license: "mit",
-		repo: "KotwOSS/kekupload-server",
-		fork: "KekOnTheWorld/kekupload-server",
+		fork: "KotwOSS/kekupload-server",
+		repo: "KekOnTheWorld/kekupload-server",
 		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-client",
 		description: "Frontend made for KekUpload written using SvelteKit.",
 		license: "mit",
-		repo: "KotwOSS/kekupload-client",
-		fork: "KekOnTheWorld/kekupload-client",
+		fork: "KotwOSS/kekupload-client",
+		repo: "KekOnTheWorld/kekupload-client",
 		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-lib-ts",
 		description: "A library for KekUpload written in typescript.",
 		license: "mit",
-		repo: "KotwOSS/kekupload-lib-ts",
-		fork: "KekOnTheWorld/kekupload-lib-ts",
+		fork: "KotwOSS/kekupload-lib-ts",
+		repo: "KekOnTheWorld/kekupload-lib-ts",
 		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-cli",
 		description: "A CLI client made for KekUpload.",
 		license: "mit",
-		repo: "CraftingDragon007/KekUploadCLIClient",
-		fork: "KekOnTheWorld/kekupload-cli"
+		fork: "CraftingDragon007/KekUploadCLIClient",
+		repo: "KekOnTheWorld/kekupload-cli"
 	},
 	{
 		title: "ReSVG",
 		description: "ReSVG is a advanced SVG compiler which includes many features.",
 		license: "mit",
-		repo: "KotwOSS/resvg",
-		fork: "KekOnTheWorld/resvg"
+		fork: "KotwOSS/resvg",
+		repo: "KekOnTheWorld/resvg"
 	},
 	{
 		title: "Kock Themes",
 		description: "Kock themes are made for real KEKs just like you and me.",
 		license: "mit",
-		repo: "KotwOSS/kock-themes",
-		fork: "KekOnTheWorld/kock-themes",
+		fork: "KotwOSS/kock-themes",
+		repo: "KekOnTheWorld/kock-themes",
 		demo: "https://marketplace.visualstudio.com/items?itemName=kotwoss.kock-themes"
 	},
 	{
