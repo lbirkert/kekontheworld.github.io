@@ -5,6 +5,12 @@
     export let active: boolean;
 </script>
 
+<svelte:head>
+    {#if active}
+        <title>KekOnTheWorld | Experience</title>
+    {/if}
+</svelte:head>
+
 <section class="full" class:active>
     <h1>
         Experience

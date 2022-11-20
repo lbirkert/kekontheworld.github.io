@@ -25,6 +25,12 @@
     if(browser) timer();
 </script>
 
+<svelte:head>
+    {#if active}
+        <title>KekOnTheWorld | Projects</title>
+    {/if}
+</svelte:head>
+
 <section class="full" class:active>
     <h1>
         Projects

@@ -14,6 +14,10 @@
     let active = browser;
 </script>
 
+<svelte:head>
+    <title>KekOnTheWorld | Not found</title>
+</svelte:head>
+
 <main class:active>
     <h1><FlyinText text="404" flyin={active} delay={300} betweenDelay={200}/></h1>
     <p>{description} => <a href="/">Home</a></p>
