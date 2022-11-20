@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
 	import FlyinText from "$lib/FlyinText.svelte";
+	import { onMount } from "svelte";
 
     const descriptions = [
         "What is this place?",
@@ -11,7 +12,8 @@
 
     let description = descriptions[Math.floor(Math.random() * descriptions.length)];
 
-    let active = browser;
+    let active = false;
+    onMount(() => active = true);
 </script>
 
 <svelte:head>
