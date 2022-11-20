@@ -156,12 +156,6 @@
     class:active={active[$position]}
     on:touchstart|passive={onTouchStart} on:touchend={onTouchEnd}
     on:touchmove={onTouchMove}>
-    
-    {#if scrollY === 0 && $position !== 0}
-    <button class="up" on:click|preventDefault={() => $position--} aria-label="Scroll up">
-        <Fa icon={faArrowUp} />
-    </button>
-    {/if}
 
     <div class="wrapper" style:transform="translateY(-{gotoPosition}px)">
         <slot/>
@@ -186,15 +180,14 @@
         @apply min-h-full transition-transform duration-500 will-change-transform;
     }
 
-    .scroller .down, .scroller .up {
+    .scroller .down {
         @apply absolute text-2xl animate-bounce opacity-0 w-20 h-20 flex items-center justify-center
             dark:text-white/40 text-black/40 cursor-pointer z-10;
     }
 
     .scroller .down {@apply bottom-0}
-    .scroller .up {@apply top-0}
 
-    .scroller.active .down, .scroller.active .up {
+    .scroller.active .down {
         @apply opacity-100 transition-opacity duration-1000 delay-1000;
     }
 </style>

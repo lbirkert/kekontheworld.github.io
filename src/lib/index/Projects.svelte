@@ -68,7 +68,7 @@
     }
     
     .bar {
-        @apply flex gap-x-2;
+        @apply flex gap-x-2 opacity-0 translate-x-64;
     }
 
     .bar button {
@@ -78,12 +78,20 @@
     }
     .bar button.active { @apply scale-125 opacity-80; }
 
+    section.active .projects, section.active .bar {
+        @apply transition-[opacity,transform] duration-1000 opacity-100 translate-x-0 delay-300;
+    }
+
     .projects {
-        @apply relative h-48 w-[448px];
+        @apply relative h-48 w-[448px] opacity-0 -translate-x-64;
     }
 
     .projects ul {
-        @apply absolute flex items-center h-48 transition-transform duration-1000;
+        @apply absolute flex items-center h-48;
+    }
+
+    section.active .projects ul {
+        @apply transition-transform duration-1000;
     }
 
     .projects li {

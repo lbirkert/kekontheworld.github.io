@@ -16,9 +16,23 @@
     <ul class="langs">
         {#each EXPERIENCE_LANGS as lang, i}
         <li class="bar" style="transition-delay: {active ? i*100 + 300 : 0}ms">
-            <p class="name"><Fa icon={lang.icon}/> {lang.name}</p>
+            <p class="name">
+                {#if typeof lang.icon === "string"}
+                    {@html lang.icon}
+                {:else}
+                    <Fa icon={lang.icon}/> 
+                {/if}
+                {lang.name}
+            </p>
             <div style="width: {active?lang.perc:0}; transition-delay: {active ? i*100 + 500 : 0}ms">
-                <p class="name"><Fa icon={lang.icon}/> {lang.name}</p>
+                <p class="name">
+                    {#if typeof lang.icon === "string"}
+                        {@html lang.icon}
+                    {:else}
+                        <Fa icon={lang.icon}/> 
+                    {/if}
+                    {lang.name}
+                </p>
                 <p class="perc">{lang.perc}</p>
             </div>
             <p class="perc">{lang.perc}</p>
@@ -69,7 +83,7 @@
 
     .bar div {
         @apply h-7 rounded-lg overflow-clip relative z-10 transition-[width]
-            dark:bg-orange-500 bg-red-600 flex items-center;
+            dark:bg-gray-300 bg-gray-900 flex items-center;
     }
 
     section.active .bar div {
