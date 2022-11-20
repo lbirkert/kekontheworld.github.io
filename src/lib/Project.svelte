@@ -56,7 +56,7 @@
     .project > h1 .badge.public { @apply border-gray-600 text-gray-800 dark:border-gray-600 dark:text-gray-400; }
 
     .project .fork {
-        @apply font-inter text-gray-600 dark:text-gray-400 whitespace-nowrap mb-2;
+        @apply font-inter text-gray-600 dark:text-gray-400 whitespace-nowrap mb-2 sm:text-base text-sm;
     }
     .project .fork a:hover { @apply  text-blue-500 dark:text-blue-400; }
 
