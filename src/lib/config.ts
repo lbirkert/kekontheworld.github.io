@@ -82,18 +82,17 @@ export const EXPERIENCE_LANGS = [
 ];
 
 export const LICENSES = {
-	"mit": {
+	mit: {
 		name: "MIT License",
-		short: "MIT",
+		short: "MIT"
 	},
 	"gpl-3.0": {
 		name: "GNU General Public License v3",
-		short: "GNU GPLv3",
+		short: "GNU GPLv3"
 	}
 } as { [key: string]: License };
 
 export const EXTERNAL_LICENSE_URL = "https://oss.kotw.dev/licenses/?id=";
-
 
 export const PROJECTS = [
 	{
@@ -119,11 +118,12 @@ export const PROJECTS = [
 	},
 	{
 		title: "kekupload-server",
-		description: "A backend providing a HTTP REST like interface for uploading files written in rust.",
+		description:
+			"A backend providing a HTTP REST like interface for uploading files written in rust.",
 		license: "mit",
 		repo: "KotwOSS/kekupload-server",
 		fork: "KekOnTheWorld/kekupload-server",
-		demo: "https://upload.gamepowerx.com",
+		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-client",
@@ -131,7 +131,7 @@ export const PROJECTS = [
 		license: "mit",
 		repo: "KotwOSS/kekupload-client",
 		fork: "KekOnTheWorld/kekupload-client",
-		demo: "https://upload.gamepowerx.com",
+		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-lib-ts",
@@ -139,21 +139,21 @@ export const PROJECTS = [
 		license: "mit",
 		repo: "KotwOSS/kekupload-lib-ts",
 		fork: "KekOnTheWorld/kekupload-lib-ts",
-		demo: "https://upload.gamepowerx.com",
+		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-cli",
 		description: "A CLI client made for KekUpload.",
 		license: "mit",
 		repo: "CraftingDragon007/KekUploadCLIClient",
-		fork: "KekOnTheWorld/kekupload-cli",
+		fork: "KekOnTheWorld/kekupload-cli"
 	},
 	{
 		title: "ReSVG",
 		description: "ReSVG is a advanced SVG compiler which includes many features.",
 		license: "mit",
 		repo: "KotwOSS/resvg",
-		fork: "KekOnTheWorld/resvg",
+		fork: "KekOnTheWorld/resvg"
 	},
 	{
 		title: "Kock Themes",
@@ -174,7 +174,7 @@ export const PROJECTS = [
 		title: "Port control",
 		description: "Webinterface made for the ESP32 Development board to test circuits.",
 		license: "mit",
-		repo: "KekOnTheWorld/portcontrol",
+		repo: "KekOnTheWorld/portcontrol"
 	},
 	{
 		title: "Local account",
@@ -217,5 +217,5 @@ export const PROJECTS = [
 		license: "mit",
 		repo: "KekOnTheWorld/Essentials",
 		archive: true
-	},
+	}
 ] as Project[];
