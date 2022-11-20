@@ -25,7 +25,7 @@
 <svelte:window bind:innerHeight></svelte:window>
 
 <svelte:head>
-    <title>KekOnTheWorld | 🎃 Happy Halloween</title>
+    <title>KekOnTheWorld</title>
 </svelte:head>
 
 {#each sections as section}<div id={section}/>{/each}

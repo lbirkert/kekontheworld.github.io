@@ -10,13 +10,19 @@
     export let active: boolean;
 </script>
 
+<svelte:head>
+    {#if active}
+        <title>KekOnTheWorld | About</title>
+    {/if}
+</svelte:head>
+
 <section class:active class="full">
     <h1>
         <FlyinText text="KekOnTheWorld" flyin={active} delay={300}/>
     </h1>
     <p>
         KekOnTheWorld is a student and developer who loves Opensource Software.
-        He has been coding since <Timesince time={new Date("2020-1-8 9:15")}/> and is heavily <a href="#experience">experienced</a> in Front- and Backend development.
+        He has been coding for <Timesince time={new Date("2020-1-8 9:15")}/> and is heavily <a href="#experience">experienced</a> in Front- and Backend development.
     </p>
     <div class="socials">
         <a href={DISCORD_URL} target="_blank" rel="noreferrer" aria-label="Discord">

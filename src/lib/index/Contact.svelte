@@ -7,6 +7,12 @@
     export let active: boolean;
 </script>
 
+<svelte:head>
+    {#if active}
+        <title>KekOnTheWorld | Contact</title>
+    {/if}
+</svelte:head>
+
 <section class="full" class:active>
     <h1>Contact</h1>
     <p>You can contact me at following providers. I will try to respond as fast as i can. I promise</p>
@@ -19,6 +25,7 @@
         </a>
     </div>
 </section>
+
 <style lang="postcss">
     section {
         @apply flex items-center justify-center flex-col gap-7 px-5;
