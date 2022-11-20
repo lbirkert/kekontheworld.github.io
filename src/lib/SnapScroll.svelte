@@ -9,7 +9,7 @@
 
     import { writable } from "svelte/store";
 
-    import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+    import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
     import Fa from "svelte-fa";
 
     export let sections: string[];

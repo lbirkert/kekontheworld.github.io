@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { browser } from "$app/environment";
 	import FlyinText from "$lib/FlyinText.svelte";
 	import { onMount } from "svelte";
 
