@@ -68,7 +68,7 @@
     }
     
     .bar {
-        @apply flex gap-x-2 opacity-0 translate-x-64;
+        @apply flex sm:gap-x-2 gap-x-1 opacity-0 translate-x-64;
     }
 
     .bar button {
@@ -83,7 +83,7 @@
     }
 
     .projects {
-        @apply relative h-48 w-[448px] opacity-0 -translate-x-64;
+        @apply relative h-48 w-screen max-w-[448px] opacity-0 -translate-x-64;
     }
 
     .projects ul {
