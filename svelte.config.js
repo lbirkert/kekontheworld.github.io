@@ -14,8 +14,7 @@ const config = {
 			pages: "build",
 			assets: "build",
 			fallback: "404.html"
-		}),
-		trailingSlash: "always"
+		})
 	}
 };
 
