@@ -1,24 +1,28 @@
 <script lang="ts">
     import { browser } from '$app/environment';
 
-    import vertexShader from "$lib/shaders/halloween.vert.js";
-    import fragmentShader from "$lib/shaders/halloween.frag.js";
-
 	import { Canvas, Camera, Mesh, Scene } from "svelte-ogl";
-	import { Program, Plane } from "ogl";
+    import { Program, Plane } from "ogl";
 
-	const uniforms = { time: { value: 0 } };
+    export let fragmentShader: string;
+    export let vertexShader: string;
+
+    const uniforms = { time: { value: 0 }, resolution: { value: [0, 0] } };
 
     let mount = browser;
 </script>
 
 <main class:mount>
     <Canvas
-        on:render={(e) => uniforms.time.value = e.detail.time / 1000}
+        on:render={(e) => {
+            const size = e.detail.size;
+            uniforms.resolution.value = [ size.width, size.height ];
+            uniforms.time.value = e.detail.time / 1000
+        }}
         dpr={0.15}
     >
         <Camera />
-
+        
         <Scene>
             <Mesh
                 program={(gl) =>

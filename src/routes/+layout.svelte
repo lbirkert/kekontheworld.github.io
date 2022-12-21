@@ -1,17 +1,27 @@
 <script lang="ts">
-	import Halloween from "$lib/Halloween.svelte";
-	import ThemePre from "$lib/ThemePre.svelte";
+	import Shader from "$lib/Shader.svelte";
 
 	import "@fontsource/dela-gothic-one/latin.css";
 	import "@fontsource/inter/latin.css";
-	import "../app.css";
+    import "../app.css";
+
+    import vertexShader from "$lib/shaders/snow.vert.js";
+    import fragmentShader from "$lib/shaders/snow.frag.js";
 </script>
 
-<ThemePre/>
+<svelte:head>
+    <script>
+        var prefered = localStorage.getItem("theme");
+        var darkMode = prefered ? prefered === "dark" :
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+        darkMode ? document.head.classList.add("dark") : 
+            document.head.classList.remove("dark");
+    </script>
+</svelte:head>
 
 
 <div id="bg">
-	<Halloween/>
+    <Shader {vertexShader} {fragmentShader} />
 	<div/>
 </div>
 

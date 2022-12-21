@@ -7,5 +7,4 @@ void main()	{
     vUv = uv;
 
     gl_Position = vec4(position, 0, 1);
-
 }
