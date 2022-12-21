@@ -31,7 +31,8 @@
 		"prettier-plugin-svelte": "^2.7.0",
 		"svelte": "^3.50.1",
 		"svelte-check": "^2.9.0",
-        
+        "@types/ogl": "npm:ogl-types@^0.0.102",
+        "ogl": "^0.0.102",
 		"svelte-ogl": "^0.0.102",
 		"svelte-preprocess": "^4.10.7",
 		"tailwindcss": "^3.1.8",
