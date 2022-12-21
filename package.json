@@ -32,7 +32,7 @@
 		"svelte": "^3.50.1",
 		"svelte-check": "^2.9.0",
         
-		"svelte-ogl": "^0.0.4",
+		"svelte-ogl": "^0.0.102",
 		"svelte-preprocess": "^4.10.7",
 		"tailwindcss": "^3.1.8",
 		"tslib": "^2.4.0",
