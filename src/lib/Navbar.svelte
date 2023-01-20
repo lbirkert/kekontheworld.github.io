@@ -29,8 +29,10 @@
             draggable="false"
             class="w-12 sm:w-8 h-12 sm:h-8 rounded-lg cursor-pointer" 
             src="/logo.png" alt="Logo"
-        >
+                            >
+        <h1>KOTW</h1>
     </button>
+    <h1>KOTW</h1>
     <div class="wrapper flex items-center gap-2 sm:gap-4 md:gap-8">
         <div class="links">
             {#each links as [href, name], i}
@@ -55,6 +57,18 @@
         @apply max-w-6xl top-0 left-[50%] -translate-x-[50%] self-center
                h-16 sm:h-14 px-[max(1rem,4vw)] py-2 sm:py-2 w-full z-10 fixed
                flex items-center justify-between;
+    }
+
+    button {
+        @apply flex gap-x-5 md:gap-x-5 items-center;
+    }
+
+    button h1 {
+        @apply text-2xl md:text-xl hidden sm:block;
+    }
+
+    nav > h1 {
+        @apply block sm:hidden text-2xl;
     }
 
     .mobile {
