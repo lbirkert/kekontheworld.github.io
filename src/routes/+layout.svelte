@@ -31,6 +31,6 @@
 
 <style lang="postcss">
 	#bg div {
-		@apply backdrop-blur-md fixed top-0 left-0 w-screen h-screen bg-white/60 -z-10 dark:bg-black/60;
+		@apply fixed top-0 left-0 w-screen h-screen bg-white/60 -z-10 dark:bg-black/60;
 	}
 </style>
