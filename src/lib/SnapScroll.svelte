@@ -13,7 +13,6 @@
     import Fa from "svelte-fa";
 
     export let sections: string[];
-    export let height: number[] | number;
     export let wheellock = 500;
     export let position = writable(0);
     export let active: { [key: number]: boolean } = {};
@@ -35,10 +34,6 @@
     
     let wheelLocked = false;
     let scrollY: number;
-    
-    let gotoPosition = 0;
-    
-    $: if(height) gotoPosition = calculatePosition($position, height);
 
     let scroll = writable(false);
     let scrollTm: number;
@@ -50,11 +45,6 @@
             else $scroll = false;
         }
     };
-
-    function calculatePosition(position: number, height: number | number[]): number {
-        return typeof height == "number" ? position * height :
-            height.slice(0, position).reduce((k, v) => k + v, 0);
-    }
 
     function lockWheel() {
         wheelLocked = true;
@@ -157,7 +147,7 @@
     on:touchstart|passive={onTouchStart} on:touchend={onTouchEnd}
     on:touchmove={onTouchMove}>
 
-    <div class="wrapper" style:transform="translateY(-{gotoPosition}px)">
+    <div class="wrapper" style:transform="translateY(-{$position * 100}vh)">
         <slot/>
     </div>
 
