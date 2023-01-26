@@ -10,6 +10,7 @@ const config = {
 	}),
 
 	kit: {
+		inlineStyleThreshold: 1024 * 10,
 		adapter: adapter({
 			pages: "build",
 			assets: "build",
