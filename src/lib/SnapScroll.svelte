@@ -145,7 +145,7 @@
 <div class="scroller" on:wheel|passive={onWheel}
     class:active={active[$position]}
     on:touchstart|passive={onTouchStart} on:touchend={onTouchEnd}
-    on:touchmove={onTouchMove}>
+    on:touchmove|passive={onTouchMove}>
 
     <div class="wrapper" style:transform="translateY(-{$position * 100}vh)">
         <slot/>
