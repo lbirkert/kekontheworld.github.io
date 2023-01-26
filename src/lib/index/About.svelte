@@ -22,7 +22,8 @@
     </h1>
     <p>
         KekOnTheWorld is a student and developer who loves Opensource Software.
-        He has been coding for <Timesince time={new Date("2020-1-8 9:15")}/> and is heavily <a href="#experience">experienced</a> in Front- and Backend development.
+        He has been coding for <Timesince time={new Date("2020-3-8 9:15")}/> and is heavily
+        <a href="#experience">experienced</a> in Front- and Backend development.
     </p>
     <div class="socials">
         <a href={DISCORD_URL} target="_blank" rel="noreferrer" aria-label="Discord">

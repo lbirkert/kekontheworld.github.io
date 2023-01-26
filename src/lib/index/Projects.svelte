@@ -48,7 +48,7 @@
     </div>
     <div class="bar">
         {#each new Array(projects.length).fill(0) as _, i}
-            <button on:click={() => move(i)} class:active={projectIdx === i}/>
+            <button aria-label="Switch to project {i}" on:click={() => move(i)} class:active={projectIdx === i}/>
         {/each}
     </div>
 </section>
