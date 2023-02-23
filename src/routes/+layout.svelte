@@ -5,8 +5,8 @@
 	import "@fontsource/inter/latin.css";
     import "../app.css";
 
-    import vertexShader from "$lib/shaders/snow.vert.js";
-    import fragmentShader from "$lib/shaders/snow.frag.js";
+    import vertexShader from "$lib/shaders/halloween.vert.js";
+    import fragmentShader from "$lib/shaders/halloween.frag.js";
 </script>
 
 <svelte:head>
