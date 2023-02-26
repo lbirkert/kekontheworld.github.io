@@ -65,7 +65,7 @@
 	}
 
 	section > p span {
-		@apply text-red-600 dark:text-orange-500;
+		@apply text-blue-600 dark:text-orange-500;
 	}
 
 	section.active > h1,
