@@ -54,7 +54,7 @@
 		/>
 	</div>
 </nav>
-<div class:menu class="mobile dark:bg-black/20">
+<div class:menu class="mobile">
 	{#each links as [href, name], i}
 		<a
 			{href}
@@ -105,6 +105,11 @@
              h-screen px-6 w-full backdrop-blur-lg opacity-0
             duration-300 pointer-events-none py-20 bg-white/20;
 	}
+
+	:global(head.dark ~ body) .mobile {
+		@apply bg-black/30;
+	}
+
 	.mobile.menu {
 		@apply pointer-events-auto opacity-100;
 	}
