@@ -18,7 +18,7 @@
 	</p>
 	<ul class="langs">
 		{#each EXPERIENCE_LANGS as lang, i}
-			<li class="bar" style="transition-delay: {active ? i * 100 + 300 : 0}ms">
+			<li class="bar" style="transition-delay: {active ? i * 400 + 300 : 0}ms">
 				<p class="name">
 					{#if typeof lang.icon === "string"}
 						{@html lang.icon}
@@ -28,7 +28,7 @@
 					{lang.name}
 				</p>
 				<div
-					style="width: {active ? lang.perc : 0}; transition-delay: {active ? i * 100 + 500 : 0}ms"
+					style="width: {active ? lang.perc : 0}; transition-delay: {active ? i * 400 + 500 : 0}ms"
 				>
 					<p class="name">
 						{#if typeof lang.icon === "string"}
