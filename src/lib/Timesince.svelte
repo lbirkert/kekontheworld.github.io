@@ -41,7 +41,7 @@
 	span {
 		@apply rounded-lg bg-blue-600 text-white
                cursor-pointer select-none inline-flex
-               duration-300 px-2 transition-none;
+               duration-300 px-2 transition-none font-semibold;
 	}
 
 	:global(head.dark ~ body) span {
