@@ -11,10 +11,11 @@
 
 <style lang="postcss">
 	footer {
-		@apply flex flex-col gap-y-2 py-8 font-inter bg-white/20 backdrop-blur-lg;
+		@apply flex flex-col gap-y-2 py-8 font-inter
+			bg-white/50 border-t-[1px] border-white;
 	}
 
 	:global(head.dark ~ body) footer {
-		@apply bg-black/40;
+		@apply bg-black/40 border-white/20;
 	}
 </style>

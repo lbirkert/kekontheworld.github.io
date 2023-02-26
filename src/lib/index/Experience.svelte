@@ -74,12 +74,14 @@
 	}
 
 	.langs {
-		@apply flex flex-col font-inter w-full max-w-xl gap-y-4;
+		@apply flex flex-col font-inter w-full max-w-xl gap-y-3;
 	}
+
 	section .bar {
 		@apply flex items-center relative rounded-lg transform-gpu
             opacity-0 transition-[opacity,transform] translate-x-20
-            dark:bg-black/20 bg-white/20;
+			dark:bg-black/40 bg-white/20 border-[1px] border-white drop-shadow-md
+			dark:border-white/20;
 	}
 	section.active .bar {
 		@apply opacity-100 duration-1000 translate-x-0;
@@ -89,8 +91,8 @@
 	}
 
 	.bar div {
-		@apply h-7 rounded-lg overflow-clip relative z-10 transition-[width]
-            dark:bg-gray-300 bg-gray-900 flex items-center;
+		@apply h-7 rounded-md overflow-clip relative z-10 transition-[width]
+            dark:bg-orange-500 bg-blue-600 flex items-center;
 	}
 
 	section.active .bar div {
@@ -102,7 +104,8 @@
 	}
 
 	.bar div > .perc {
-		@apply left-0 translate-x-[calc(calc(min(calc(100vw-48px),calc(36rem-8px))-100%))];
+		@apply left-0 translate-x-[min(calc(100vw-85px),531px)];
+		@apply right-0;
 	}
 	.bar div > .name {
 		@apply left-2;

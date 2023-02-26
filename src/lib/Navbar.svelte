@@ -68,16 +68,16 @@
 <style lang="postcss">
 	nav {
 		@apply max-w-5xl top-0 left-[50%] -translate-x-[50%] self-center
-               h-16 sm:h-14 px-[max(1rem,4vw)] py-2 sm:py-2 w-full z-10 fixed
+               px-[max(1rem,4vw)] py-3 sm:py-5 w-full z-10 fixed
                flex items-center justify-between lg:rounded-lg;
 	}
 
 	nav.fixed {
-		@apply bg-white/20 backdrop-blur-lg;
+		@apply bg-white/5 border-b-[1px] drop-shadow-md border-white backdrop-blur-lg;
 	}
 
 	:global(head.dark ~ body) nav.fixed {
-		@apply bg-black/40;
+		@apply bg-black/40 border-white/20;
 	}
 
 	nav > button > img {

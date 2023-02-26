@@ -41,22 +41,22 @@
 		<a href="#experience">experienced</a> in Front- and Backend development.
 	</p>
 	<div class="socials">
-		<a href={DISCORD_URL} target="_blank" rel="noreferrer" aria-label="Discord">
+		<a href={DISCORD_URL} target="_blank" rel="noreferrer" title="Discord">
 			<Fa icon={faDiscord} />
 		</a>
-		<a href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="Github">
+		<a href={GITHUB_URL} target="_blank" rel="noreferrer" title="Github">
 			<Fa icon={faGithub} />
 		</a>
-		<a href={GITLAB_URL} target="_blank" rel="noreferrer" aria-label="Gitlab">
+		<a href={GITLAB_URL} target="_blank" rel="noreferrer" title="Gitlab">
 			<Fa icon={faGitlab} />
 		</a>
-		<a href={TWITTER_URL} target="_blank" rel="noreferrer" aria-label="Twitter">
+		<a href={TWITTER_URL} target="_blank" rel="noreferrer" title="Twitter">
 			<Fa icon={faTwitter} />
 		</a>
-		<a href={TWITCH_URL} target="_blank" rel="noreferrer" aria-label="Twitch">
+		<a href={TWITCH_URL} target="_blank" rel="noreferrer" title="Twitch">
 			<Fa icon={faTwitch} />
 		</a>
-		<a href={YOUTUBE_URL} target="_blank" rel="noreferrer" aria-label="Youtube">
+		<a href={YOUTUBE_URL} target="_blank" rel="noreferrer" title="Youtube">
 			<Fa icon={faYoutube} />
 		</a>
 	</div>

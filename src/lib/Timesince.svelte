@@ -19,7 +19,7 @@
 		const minutes = Math.floor(seconds / 60);
 		const hours = Math.floor(minutes / 60);
 		const days = Math.floor(hours / 24);
-		const months = Math.floor(days / 30);
+		const months = Math.floor(days / (365 / 12));
 		const years = Math.floor(days / 365);
 		return [seconds % 60, minutes % 60, hours % 24, days % 30, months % 12, years];
 	}
@@ -39,8 +39,12 @@
 
 <style lang="postcss">
 	span {
-		@apply rounded-lg bg-gray-800 text-white
+		@apply rounded-lg bg-blue-600 text-white
                cursor-pointer select-none inline-flex
-               transition-all duration-300 px-2;
+               duration-300 px-2 transition-none;
+	}
+
+	:global(head.dark ~ body) span {
+		@apply bg-orange-500 text-black;
 	}
 </style>

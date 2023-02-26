@@ -21,7 +21,7 @@ export const YOUTUBE_URL = "https://www.youtube.com/channel/UCn-EuwrJNTYtkBS-r_X
 export const EXPERIENCE_LANGS = [
 	{
 		name: "CSS",
-		perc: "100%",
+		perc: "99%",
 		icon: faCss3
 	},
 	{
@@ -36,7 +36,7 @@ export const EXPERIENCE_LANGS = [
 	},
 	{
 		name: "JavaScript, TypeScript",
-		perc: "92%",
+		perc: "94%",
 		icon: faJs
 	},
 	{
@@ -46,12 +46,12 @@ export const EXPERIENCE_LANGS = [
 	},
 	{
 		name: "C, C++, C#",
-		perc: "80%",
+		perc: "85%",
 		icon: faCuttlefish
 	},
 	{
 		name: "ZIG",
-		perc: "65%",
+		perc: "75%",
 		icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154 140" style="height:1em">
 		<g fill="currentColor">
 			<g>
@@ -103,11 +103,24 @@ export const PROJECTS = [
 		demo: "https://kotw.dev"
 	},
 	{
+		title: "frenchscape",
+		description: "A vocabulary trainer for mobile devices.",
+		license: "mit",
+		repo: "KekOnTheWorld/frenchscape"
+	},
+	{
 		title: "UnicodeExplorer",
 		description: "A tool, with which you can explore the unicode landscape.",
 		license: "mit",
 		repo: "KekOnTheWorld/UnicodeExplorer",
 		demo: "https://kotw.dev/UnicodeExplorer"
+	},
+	{
+		title: "svelte-ogl",
+		description: "A typed port of OGL (Open graphics library) to svelte using components. ",
+		license: "mit",
+		repo: "GamepowerX/svelte-ogl",
+		demo: "https://oss.kotw.dev/svelte-ogl"
 	},
 	{
 		title: "VoxelGeometry",
@@ -117,57 +130,38 @@ export const PROJECTS = [
 		demo: "https://kotw.dev/VoxelGeometry"
 	},
 	{
-		title: "svelte-ogl",
-		description: "A typed port of OGL (Open graphics library) to svelte using components. ",
-		license: "mit",
-		repo: "KotwOSS/svelte-ogl",
-		demo: "https://oss.kotw.dev/svelte-ogl"
-	},
-	{
 		title: "kekupload-server",
 		description:
 			"A backend providing a HTTP REST like interface for uploading files written in rust.",
 		license: "mit",
-		fork: "KotwOSS/kekupload-server",
-		repo: "KekOnTheWorld/kekupload-server",
+		repo: "GamepowerX/kekupload-server",
 		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-client",
 		description: "Frontend made for KekUpload written using SvelteKit.",
 		license: "mit",
-		fork: "KotwOSS/kekupload-client",
-		repo: "KekOnTheWorld/kekupload-client",
+		repo: "GamepowerX/kekupload-client",
 		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-lib-ts",
 		description: "A library for KekUpload written in typescript.",
 		license: "mit",
-		fork: "KotwOSS/kekupload-lib-ts",
-		repo: "KekOnTheWorld/kekupload-lib-ts",
+		repo: "GamepowerX/kekupload-lib-ts",
 		demo: "https://upload.gamepowerx.com"
 	},
 	{
 		title: "kekupload-cli",
 		description: "A CLI client made for KekUpload.",
 		license: "mit",
-		fork: "CraftingDragon007/KekUploadCLIClient",
-		repo: "KekOnTheWorld/kekupload-cli"
-	},
-	{
-		title: "ReSVG",
-		description: "ReSVG is a advanced SVG compiler which includes many features.",
-		license: "mit",
-		fork: "KotwOSS/resvg",
-		repo: "KekOnTheWorld/resvg"
+		repo: "GamepowerX/KekUploadCLIClient"
 	},
 	{
 		title: "Kock Themes",
-		description: "Kock themes are made for real KEKs just like you and me.",
+		description: "A collection of cool dark themed VSCode themes.",
 		license: "mit",
-		fork: "KotwOSS/kock-themes",
-		repo: "KekOnTheWorld/kock-themes",
+		repo: "GamepowerX/kock-themes",
 		demo: "https://marketplace.visualstudio.com/items?itemName=kotwoss.kock-themes"
 	},
 	{

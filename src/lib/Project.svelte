@@ -36,16 +36,16 @@
 
 <style lang="postcss">
 	main .project {
-		@apply w-screen max-w-md py-6 px-8 border-[2px] rounded-lg text-left
-            border-white dark:border-black/20
-            bg-white/30 dark:bg-black/30;
+		@apply w-screen max-w-md py-6 px-8 border-[1px] rounded-lg text-left
+            border-white dark:border-white/20
+            bg-white/50 dark:bg-black/40 drop-shadow-md;
 	}
 
 	.project > h1 {
 		@apply font-inter mb-2 flex items-center gap-x-4;
 	}
 	.project > h1 a {
-		@apply text-blue-500 dark:text-blue-400 hover:underline;
+		@apply text-blue-500 dark:text-orange-500 hover:underline;
 	}
 	.project > h1 .badge {
 		@apply border-[1px] font-inter text-sm px-1.5 rounded-xl font-light;

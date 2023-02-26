@@ -121,7 +121,7 @@
 
 <style lang="postcss">
 	main {
-		@apply min-h-screen py-24 font-inter flex flex-col 
+		@apply min-h-screen py-36 font-inter flex flex-col 
                gap-y-12 px-1.5 items-center;
 	}
 

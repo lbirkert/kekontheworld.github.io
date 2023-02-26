@@ -22,6 +22,10 @@ body::-webkit-scrollbar {
 }
 
 @layer base {
+	* {
+		@apply outline-none;
+	}
+
 	body {
 		@apply w-screen h-screen bg-white;
 	}
@@ -78,7 +82,7 @@ body::-webkit-scrollbar {
 	}
 
 	a {
-		@apply text-black hover:text-blue-900/60 dark:text-white/90 dark:hover:text-white/60;
+		@apply text-black hover:text-blue-700/60 dark:text-white/90 dark:hover:text-white/60;
 	}
 
 	.active {

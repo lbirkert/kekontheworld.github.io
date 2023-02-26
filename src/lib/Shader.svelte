@@ -19,7 +19,7 @@
 			uniforms.resolution.value = [size.width, size.height];
 			uniforms.time.value = e.detail.time / 1000;
 		}}
-		dpr={0.15}
+		dpr={0.1}
 	>
 		<Camera />
 
@@ -41,12 +41,8 @@
 	</Canvas>
 </main>
 
-<style>
+<style lang="postcss">
 	main {
-		@apply w-screen h-screen fixed top-0 left-0 transition-opacity duration-1000 opacity-0 -z-10;
-	}
-
-	main.mount {
-		@apply opacity-100;
+		@apply w-screen h-screen fixed top-0 left-0 -z-10;
 	}
 </style>

@@ -30,6 +30,6 @@
 
 <style lang="postcss">
 	#bg div {
-		@apply fixed top-0 left-0 w-screen h-screen bg-white/80 -z-10 dark:bg-black/80;
+		@apply fixed top-0 left-0 w-screen h-screen bg-white/90 -z-10 dark:bg-black/80;
 	}
 </style>

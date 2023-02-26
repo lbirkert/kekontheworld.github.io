@@ -57,10 +57,11 @@
 
 	.links a {
 		@apply flex items-center gap-x-2 font-inter tracking-wider font-semibold
-            border-white dark:border-black/20 border-[1px] rounded-lg px-3 py-1.5 
-            bg-white/30 dark:bg-black/30
+            rounded-lg px-3 py-1.5 
             transition-[transform,opacity] opacity-0 
-            transform-gpu translate-y-10;
+            transform-gpu translate-y-10
+		bg-white/50 border-[1px] border-white drop-shadow-md
+		dark:bg-black/40 border-white/20;
 	}
 
 	section.active .links a {
