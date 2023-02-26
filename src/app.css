@@ -78,14 +78,14 @@ body::-webkit-scrollbar {
 	}
 
 	a {
-		@apply text-black hover:text-red-900/60 dark:text-white/90 dark:hover:text-white/60;
+		@apply text-black hover:text-blue-900/60 dark:text-white/90 dark:hover:text-white/60;
 	}
 
 	.active {
-		@apply text-red-600 dark:text-orange-500;
+		@apply text-blue-700 dark:text-orange-500;
 	}
 
 	.active:hover {
-		@apply text-red-600/80 dark:text-orange-600;
+		@apply text-blue-700/80 dark:text-orange-600;
 	}
 }

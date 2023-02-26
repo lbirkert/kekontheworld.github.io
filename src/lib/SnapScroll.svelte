@@ -1,183 +1,194 @@
 <script lang="ts">
 	import type { WithTarget } from "src/app";
 
-    import { goto } from "$app/navigation";
+	import { goto } from "$app/navigation";
 
-    import { page } from "$app/stores";
+	import { page } from "$app/stores";
 
-    import { onMount } from "svelte";
+	import { onMount } from "svelte";
 
-    import { writable } from "svelte/store";
+	import { writable } from "svelte/store";
 
-    import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-    import Fa from "svelte-fa";
+	import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+	import Fa from "svelte-fa";
 
-    export let sections: string[];
-    export let wheellock = 500;
-    export let position = writable(0);
-    export let active: { [key: number]: boolean } = {};
+	export let sections: string[];
+	export let wheellock = 500;
+	export let position = writable(0);
+	export let active: { [key: number]: boolean } = {};
 
-    let _position = 0;
-    let activeTm: { [key: number]: number } = {};
+	let _position = 0;
+	let activeTm: { [key: number]: number } = {};
 
-    function resetActive(position: number) {
-        activeTm[position] = window.setTimeout(() => active[position] = false, 300);
-    }
+	function resetActive(position: number) {
+		activeTm[position] = window.setTimeout(() => (active[position] = false), 300);
+	}
 
-    function clearActive(position: number) {
-        clearTimeout(activeTm[position]);
-    }
+	function clearActive(position: number) {
+		clearTimeout(activeTm[position]);
+	}
 
-    function setActive(position: number) {
-        activeTm[position] = window.setTimeout(() => active[position] = true, Math.abs(_position - position) * 90 + 90);
-    }
-    
-    let wheelLocked = false;
-    let scrollY: number;
+	function setActive(position: number) {
+		activeTm[position] = window.setTimeout(
+			() => (active[position] = true),
+			Math.abs(_position - position) * 90 + 90
+		);
+	}
 
-    let scroll = writable(false);
-    let scrollTm: number;
-    $: {
-        clearInterval(scrollTm);
-        let _scroll = $position === sections.length - 1;
-        if(_scroll !== $scroll) {
-            if(_scroll) scrollTm = window.setTimeout(() => $scroll = true, 500);
-            else $scroll = false;
-        }
-    };
+	let wheelLocked = false;
+	let scrollY: number;
 
-    function lockWheel() {
-        wheelLocked = true;
-        setTimeout(() => wheelLocked = false, wheellock);
-    }
+	let scroll = writable(false);
+	let scrollTm: number;
+	$: {
+		clearInterval(scrollTm);
+		let _scroll = $position === sections.length - 1;
+		if (_scroll !== $scroll) {
+			if (_scroll) scrollTm = window.setTimeout(() => ($scroll = true), 500);
+			else $scroll = false;
+		}
+	}
 
-    onMount(() => {
-        scroll.subscribe(v => v ? document.body.classList.add("scroll") : 
-            document.body.classList.remove("scroll"));
+	function lockWheel() {
+		wheelLocked = true;
+		setTimeout(() => (wheelLocked = false), wheellock);
+	}
 
-        setTimeout(()=>window.scrollTo(0, 0), 1);
+	onMount(() => {
+		scroll.subscribe((v) =>
+			v ? document.body.classList.add("scroll") : document.body.classList.remove("scroll")
+		);
 
-        page.subscribe(p => {
-            let _hash = p.url.hash.substring(1);
-            let _position = sections.indexOf(_hash);
-            
-            if(_hash === "footer") {
-                $position = sections.length - 1;
-                scrollY = -1;
-                return;
-            }
+		setTimeout(() => window.scrollTo(0, 0), 1);
 
-            if(_position === -1) _position = 0;
-            if(_position !== $position) $position = _position;
-        });
+		page.subscribe((p) => {
+			let _hash = p.url.hash.substring(1);
+			let _position = sections.indexOf(_hash);
 
-        position.subscribe(p => {
-            resetActive(_position);
-            clearActive(p);
-            setActive(p);
+			if (_hash === "footer") {
+				$position = sections.length - 1;
+				scrollY = -1;
+				return;
+			}
 
-            _position = p;
+			if (_position === -1) _position = 0;
+			if (_position !== $position) $position = _position;
+		});
 
-            let _hash = $page.url.hash.substring(1);
-            let hash = sections[p];
-            if(hash !== _hash) goto("#" + hash);
-            
-        });
-    });
+		position.subscribe((p) => {
+			resetActive(_position);
+			clearActive(p);
+			setActive(p);
 
-    function onWheel(e: WithTarget<WheelEvent, HTMLDivElement>) {
-        console.log("WHEEL", e);
-        if(scrollY === 0) {
-            if(!wheelLocked) {
-                let deltaY = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0);
-                let _position = $position + deltaY;
-                
-                if(_position < sections.length && _position >= 0) {
-                    lockWheel();
-                    $position = _position;
-                }
-            }
-        }
-    };
+			_position = p;
 
-    let touchStart: number;
-    let touchMove: number;
+			let _hash = $page.url.hash.substring(1);
+			let hash = sections[p];
+			if (hash !== _hash) goto("#" + hash);
+		});
+	});
 
-    function onTouchStart(e: WithTarget<TouchEvent, HTMLDivElement>) {
-        touchStart = e.touches[0].clientY;
-    };
-    
-    function onTouchMove(e: WithTarget<TouchEvent, HTMLDivElement>) {
-        touchMove = e.touches[0].clientY;
+	function onWheel(e: WithTarget<WheelEvent, HTMLDivElement>) {
+		console.log("WHEEL", e);
+		if (scrollY === 0) {
+			if (!wheelLocked) {
+				let deltaY = e.deltaY > 0 ? 1 : e.deltaY < 0 ? -1 : 0;
+				let _position = $position + deltaY;
 
-    };
-    
-    function onTouchEnd(/*e: WithTarget<TouchEvent, HTMLDivElement>*/) {
-        /* && (e.target as HTMLElement).nodeName === "SECTION" Removed to provide smoother scroll experience */
-        if(scrollY === 0 && touchMove !== -1) {
-            const dy = touchStart - touchMove;
+				if (_position < sections.length && _position >= 0) {
+					lockWheel();
+					$position = _position;
+				}
+			}
+		}
+	}
 
-            console.log(dy);
+	let touchStart: number;
+	let touchMove: number;
 
-            if(dy > 100 && $position + 1 < sections.length) $position++;
-            else if(dy < -100 && $position > 0) $position--;
+	function onTouchStart(e: WithTarget<TouchEvent, HTMLDivElement>) {
+		touchStart = e.touches[0].clientY;
+	}
 
-            touchMove = -1;
-        }
+	function onTouchMove(e: WithTarget<TouchEvent, HTMLDivElement>) {
+		touchMove = e.touches[0].clientY;
+	}
 
-        touchStart = 0;
-    };
-    
-    function onKeyDown(e: WithTarget<KeyboardEvent, Window>) {
-        if(scrollY === 0) {
-            let deltaY = e.key === "ArrowDown" ? 1 : (e.key === "ArrowUp" ? -1 : 0);
-            let _position = $position + deltaY;
-                    
-            if(_position < sections.length && _position >= 0) {
-                $position = _position;
-            }
-        }
-    };
+	function onTouchEnd(/*e: WithTarget<TouchEvent, HTMLDivElement>*/) {
+		/* && (e.target as HTMLElement).nodeName === "SECTION" Removed to provide smoother scroll experience */
+		if (scrollY === 0 && touchMove !== -1) {
+			const dy = touchStart - touchMove;
+
+			console.log(dy);
+
+			if (dy > 100 && $position + 1 < sections.length) $position++;
+			else if (dy < -100 && $position > 0) $position--;
+
+			touchMove = -1;
+		}
+
+		touchStart = 0;
+	}
+
+	function onKeyDown(e: WithTarget<KeyboardEvent, Window>) {
+		if (scrollY === 0) {
+			let deltaY = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
+			let _position = $position + deltaY;
+
+			if (_position < sections.length && _position >= 0) {
+				$position = _position;
+			}
+		}
+	}
 </script>
 
-<svelte:window on:keydown={onKeyDown} bind:scrollY={scrollY}></svelte:window>
+<svelte:window on:keydown={onKeyDown} bind:scrollY />
 
-<div class="scroller" on:wheel|passive={onWheel}
-    class:active={active[$position]}
-    on:touchstart|passive={onTouchStart} on:touchend={onTouchEnd}
-    on:touchmove|passive={onTouchMove}>
+<div
+	class="scroller"
+	on:wheel|passive={onWheel}
+	class:active={active[$position]}
+	on:touchstart|passive={onTouchStart}
+	on:touchend={onTouchEnd}
+	on:touchmove|passive={onTouchMove}
+>
+	<div class="wrapper" style:transform="translateY(-{$position * 100}vh)">
+		<slot />
+	</div>
 
-    <div class="wrapper" style:transform="translateY(-{$position * 100}vh)">
-        <slot/>
-    </div>
-
-    {#if scrollY === 0}
-    <button class="down" on:click|preventDefault={() => {
-        if($position !== sections.length - 1) $position++;
-        else goto("#footer");
-    }} aria-label="Scroll down">
-        <Fa icon={faArrowDown} />
-    </button>
-    {/if}
+	{#if scrollY === 0}
+		<button
+			class="down"
+			on:click|preventDefault={() => {
+				if ($position !== sections.length - 1) $position++;
+				else goto("#footer");
+			}}
+			aria-label="Scroll down"
+		>
+			<Fa icon={faArrowDown} />
+		</button>
+	{/if}
 </div>
 
 <style lang="postcss">
-    .scroller {
-        @apply h-full overflow-hidden relative flex justify-center flex-col items-center;
-    }
+	.scroller {
+		@apply h-full overflow-hidden relative flex justify-center flex-col items-center;
+	}
 
-    .wrapper {
-        @apply min-h-full transition-transform duration-500 will-change-transform;
-    }
+	.wrapper {
+		@apply min-h-full transition-transform duration-500 will-change-transform;
+	}
 
-    .scroller .down {
-        @apply absolute text-2xl animate-bounce opacity-0 w-20 h-20 flex items-center justify-center
+	.scroller .down {
+		@apply absolute text-2xl animate-bounce opacity-0 w-20 h-20 flex items-center justify-center
             dark:text-white/40 text-black/40 cursor-pointer z-10;
-    }
+	}
 
-    .scroller .down {@apply bottom-0}
+	.scroller .down {
+		@apply bottom-0;
+	}
 
-    .scroller.active .down {
-        @apply opacity-100 transition-opacity duration-1000 delay-1000;
-    }
+	.scroller.active .down {
+		@apply opacity-100 transition-opacity duration-1000 delay-1000;
+	}
 </style>
