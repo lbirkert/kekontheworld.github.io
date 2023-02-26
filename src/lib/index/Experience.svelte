@@ -103,9 +103,13 @@
 		@apply dark:text-black text-white;
 	}
 
+	:root {
+		--bar-width: min(calc(100vw - 85px), 531px);
+	}
+
 	.bar div > .perc {
-		@apply left-0 translate-x-[min(calc(100vw-85px),531px)];
-		@apply right-0;
+		@apply left-0;
+		transform: translateX(var(--bar-width));
 	}
 	.bar div > .name {
 		@apply left-2;
