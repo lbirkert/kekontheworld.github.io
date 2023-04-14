@@ -78,7 +78,7 @@ body::-webkit-scrollbar {
 			   checked:after:translate-x-[var(--cisize)] 
 			   bg-black dark:bg-white
 			   dark:checked:bg-orange-500
-			   checked:bg-red-600;
+			   checked:bg-blue-400;
 	}
 
 	a {
