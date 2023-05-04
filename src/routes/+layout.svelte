@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import Shader from "$lib/Shader.svelte";
 
 	import "@fontsource/dela-gothic-one/latin.css";

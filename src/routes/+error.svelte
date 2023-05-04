@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import FlyinText from "$lib/FlyinText.svelte";
 	import { onMount } from "svelte";
 
