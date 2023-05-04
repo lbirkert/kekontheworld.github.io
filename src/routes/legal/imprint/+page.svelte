@@ -44,11 +44,7 @@
 
 			<h3>Kontakt:</h3>
 
-			<p><em>Elektronisch (bitte vorzugsweise nutzen)</em></p>
-
 			<p>E-Mail: <a href="mailto:kekontheworld@gmail.com">kekontheworld@gmail.com</a></p>
-
-			<p>Telefon: +49-1743644198</p>
 		</section>
 
 		<section>

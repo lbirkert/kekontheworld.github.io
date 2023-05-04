@@ -34,7 +34,7 @@
 		<h1>KOTW</h1>
 	</button>
 	<h1>KOTW</h1>
-	<div class="wrapper ">
+	<div class="wrapper">
 		<div class="links">
 			{#each links as [href, name], i}
 				<a
