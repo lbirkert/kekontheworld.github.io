@@ -26,7 +26,7 @@
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"html-minifier-terser": "^7.2.0",
-		"ogl": "^0.0.115",
+		"ogl": "^0.0.117",
 		"postcss": "^8.4.23",
 		"postcss-import": "^15.1.0",
 		"prettier": "^2.8.8",
