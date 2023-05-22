@@ -42,7 +42,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/dela-gothic-one": "^4.5.11",
+		"@fontsource/dela-gothic-one": "^5.0.0",
 		"@fontsource/inter": "^4.5.15",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"svelte-fa": "^3.0.3",
