@@ -51,6 +51,11 @@
 		position: fixed;
 		left: 0;
 		bottom: 0;
-		max-width: 400px;
+		text-align: left;
+		font-family: "Inter", sans-serif;
+	}
+
+	a {
+		color: #7373ff;
 	}
 </style>
