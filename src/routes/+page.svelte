@@ -36,6 +36,7 @@
 	</main>
 	<Footer />
 </div>
+<p>This is my old portofolio. <a href="https://lbirkert.com">Checkout my new one</a></p>
 
 <style lang="postcss">
 	.wrapper {
@@ -44,5 +45,12 @@
 
 	.wrapper.mount {
 		opacity: 1;
+	}
+
+	p {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		max-width: 400px;
 	}
 </style>
