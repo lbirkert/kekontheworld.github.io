@@ -43,7 +43,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/dela-gothic-one": "^4.5.10",
-		"@fontsource/inter": "^4.5.12",
+		"@fontsource/inter": "^5.0.4",
 		"@fortawesome/free-solid-svg-icons": "^6.2.0",
 		"svelte-fa": "^3.0.3",
 		"timezones.json": "^1.6.1"
