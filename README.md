@@ -9,6 +9,8 @@ You can find a public demo [here](https://kotw.dev)
 
 ## Deprecation
 
+*Archived on the 8th of July 2023*
+
 Lately I have become more secure about the work I am doing and the products I have published. This is why I migrated my github and site name to my real name. I wanted to scrap this website for a long time, as it performs terrible on mobile devices and got the chance. The new site is located at [https://lbirkert.com](https://lbirkert.com) and you can find the source code [here](https://github.com/lbirkert/lbirkert.github.io).
 
 <br>
